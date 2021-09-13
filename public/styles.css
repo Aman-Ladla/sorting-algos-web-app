@@ -1,5 +1,5 @@
 html{
-    background-color: black;
+    background-color: white;
 }
 
 .algoButtons{
@@ -19,12 +19,12 @@ html{
 
 .footer {
     position: absolute;
-    width: 100%;
+    /*width: 100%;*/
     left: 0;
     right: 0;
     bottom: 0;
     height: 3rem;
-    background-color: white;
+    background-color:rgba(0,0,0,.74);
     align-content: center;
 }
 
@@ -44,6 +44,7 @@ html{
     /*margin-left: auto;*/
     /*margin-right: auto;*/
     margin-top: 2px;
+    border-radius: 10px;
 }
 
 .rightFooterContents{
@@ -58,16 +59,23 @@ html{
 
 .sortButton{
     height: 40px;
-    background-color: grey;
-    color: white;
+    background-color: limegreen;
+    color: black;
     border: none;
     width: 90px;
 }
 
-.footerLabel{
-    font-size: 18px;
-}
+/*.footerLabel{*/
+/*    font-size: 18px;*/
+/*}*/
 
-.slider{
-    margin-left: 12px;
+/*.slider{*/
+/*    margin-left: 12px;*/
+/*}*/
+
+.anim{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
 }
