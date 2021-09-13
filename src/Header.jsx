@@ -4,7 +4,7 @@ function Header(){
     return (
         <div className={"head"} style={{ display: "flex" }}>
             <img
-                src="https://previews.123rf.com/images/boxfile123/boxfile1232007/boxfile123200700189/151555745-sa-logo-design-vector-icon-luxury.jpg"
+                src="https://previews.123rf.com/images/cookelma/cookelma1310/cookelma131000096/22914293-fire-alphabet-letter-m-isolated-on-black-background-.jpg"
                 alt="Logo"
                 height={80}
             />
