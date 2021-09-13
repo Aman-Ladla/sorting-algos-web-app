@@ -81,7 +81,26 @@ html{
 }
 
 .controls{
-    background-color: black;
-    box-shadow: 4 1px 5px #fff;
-    margin-top: 1px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(0,0,0,.98);
+    height: 4rem;
+    box-shadow: 0 1px 5px rgb(255 255 255 / 70%);
+    flex-direction: row;
+    align-items: center;
+}
+
+.labels{
+    color: white;
+    margin-right: 15px;
+}
+
+.newArrayButton{
+    background-color: rgba(0,0,0,.98);
+    border: none;
+    color: rgb(255 255 255 / 90%);
+}
+
+.newArrayButton:hover{
+    color: white;
 }
