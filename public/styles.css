@@ -71,3 +71,9 @@ html{
 .slider{
     margin-left: 12px;
 }
+
+.controls{
+    background-color: black;
+    box-shadow: 4 1px 5px #fff;
+    margin-top: 1px;
+}
