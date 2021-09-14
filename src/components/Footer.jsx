@@ -2,33 +2,33 @@ import {useState} from "react";
 
 function Footer() {
 
-    const [value, setValue] = useState(50);
-
-    const [onAboutButton, setAboutOnButton] = useState(false);
-
-    const [onTeamButton, setTeamOnButton] = useState(false);
+    // const [value, setValue] = useState(50);
+    //
+    // const [onAboutButton, setAboutOnButton] = useState(false);
+    //
+    // const [onTeamButton, setTeamOnButton] = useState(false);
 
     const[clicked, setClicked] = useState(false);
 
-    function setValueImpl(event) {
-        setValue(event.target.value);
-    }
-
-    function inAboutUs() {
-        setAboutOnButton(true);
-    }
-
-    function outAboutUs() {
-        setAboutOnButton(false);
-    }
-
-    function inTeam() {
-        setTeamOnButton(true);
-    }
-
-    function outTeam() {
-        setTeamOnButton(false);
-    }
+    // function setValueImpl(event) {
+    //     setValue(event.target.value);
+    // }
+    //
+    // function inAboutUs() {
+    //     setAboutOnButton(true);
+    // }
+    //
+    // function outAboutUs() {
+    //     setAboutOnButton(false);
+    // }
+    //
+    // function inTeam() {
+    //     setTeamOnButton(true);
+    // }
+    //
+    // function outTeam() {
+    //     setTeamOnButton(false);
+    // }
 
     function setClickedImpl(){
         setClicked(!clicked);
