@@ -19,44 +19,20 @@ html{
 
 .footer {
     position: absolute;
-    /*width: 100%;*/
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
     height: 3rem;
     background-color:rgba(0,0,0,.74);
-    align-content: center;
-}
-
-.leftFooterContents{
-    /*position: absolute;*/
-    /*bottom: 17px;*/
-    /*text-align: justify;*/
-    /*margin-left: 10px;*/
-    margin-top: 5px;
-    height: 40px;
+    align-items: center;
 }
 
 .middleFooterContents{
-    /*margin-left: 50%;*/
-    /*position: absolute;*/
-    /*bottom: 5px;*/
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    margin-top: 2px;
     border-radius: 10px;
 }
-
-.rightFooterContents{
-    /*margin-left: auto;*/
-    /*margin-right: auto;*/
-    color: grey;
-    background-color: white;
-    height: 40px;
-    border: none;
-    border-radius: 30px;
-}
-
 .sortButton{
     height: 40px;
     background-color: limegreen;
@@ -64,14 +40,6 @@ html{
     border: none;
     width: 90px;
 }
-
-/*.footerLabel{*/
-/*    font-size: 18px;*/
-/*}*/
-
-/*.slider{*/
-/*    margin-left: 12px;*/
-/*}*/
 
 .anim{
     height: 100%;
