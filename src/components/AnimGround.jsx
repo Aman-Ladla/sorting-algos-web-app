@@ -3,6 +3,7 @@ function AnimGround(props) {
     let arr = props.arr;
 
     return (
+        <div className = "animContainer">
         <div className='anim'>
 
             {arr.map((value, index) => {
@@ -38,6 +39,7 @@ function AnimGround(props) {
             )
             }
 
+        </div>
         </div>
     );
 }
