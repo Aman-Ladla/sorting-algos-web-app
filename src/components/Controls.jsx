@@ -33,8 +33,8 @@ function Controls(props) {
                     backgroundColor: onButton ? "#ff336a" : "black",
                     color: onButton && "black",
                     borderRadius: "30px",
-                    fontSize: "large",
-                    height: "40px",
+                    fontSize: "2.4vh",
+                    height: "70%",
                 }}
                 onMouseOver={inSubmit}
                 onMouseOut={outSubmit}
@@ -43,7 +43,7 @@ function Controls(props) {
                 Create Random Array
             </button>
             <div>
-                <label className='labels'>Array Size</label>
+                <label className='labels' style = {{fontSize: "2.4vh",}}>Array Size</label>
                 <input
                     onChange={setSizeImpl}
                     type="range" min="4" max="100" value={size}
@@ -51,7 +51,7 @@ function Controls(props) {
                 </input>
             </div>
             <div>
-                <label className='labels'>Speed</label>
+                <label className='labels' style = {{fontSize: "2.4vh",}}>Speed</label>
                 <input onChange={setSpeedImpl}
                        type="range" min="1" max="100" value={speed}
                        id="myRange">
