@@ -1,3 +1,5 @@
+/*Initial styles*/
+
 html{
     background-color: white;
     height: 100%;
@@ -14,9 +16,9 @@ body{
     height: 100%;
 }
 
+/*Header styles*/
 
 .algoButtons{
-    margin-top: 20px;
     color: white;
     background-color: black;
     font-size: large;
@@ -28,41 +30,9 @@ body{
 
 .head{
     background-color: black;
-}
-
-.footer {
-    position: absolute;
     display: flex;
-    justify-content: center;
-    flex-direction: row;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3rem;
-    background-color:rgba(0,0,0,.74);
     align-items: center;
-}
-
-.middleFooterContents{
-    border-radius: 10px;
-}
-.sortButton{
-    height: 40px;
-    background-color: limegreen;
-    color: black;
-    border: none;
-    width: 90px;
-}
-
-.anim{
-    height: 65%;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    text-align: center; 
-    background-color:red;
+    height: 4rem;
 }
 
 .controls{
@@ -72,8 +42,10 @@ body{
     height: 4rem;
     box-shadow: 0 1px 5px rgba(255,255,255,0.7);
     flex-direction: row;
-    align-items: center;
+    align-items: center
 }
+
+/*Sub Header styles*/
 
 .labels{
     color: white;
@@ -88,4 +60,48 @@ body{
 
 .newArrayButton:hover{
     color: white;
+}
+
+/*Footer styles*/
+
+.footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background-color:rgba(0,0,0,.74);
+    align-items: center;
+}
+
+.sortButton{
+    height: 40px;
+    background-color: limegreen;
+    color: black;
+    border: none;
+    width: 90px;
+}
+
+/*Animation ground styles*/
+
+.animContainer{
+    height: 72.8%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+}
+
+.anim{
+    height: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center; 
+    background-color:white;
+    align-content: center;
 }

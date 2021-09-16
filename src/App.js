@@ -4,7 +4,7 @@ import Controls from "./components/Controls";
 import AnimGround from "./components/AnimGround";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {useState} from "react";
-import createArray from "./CreatingArr";
+import createArray  from "./CreatingArr";
 
 function App() {
 
@@ -14,12 +14,13 @@ function App() {
         setArr(createArray(size));
     }
 
+    let max = Math.max(...arr);
 
   return (
     <div className="App">
         <Header/>
         <Controls update={updateArr}/>
-        <AnimGround arr={arr}/>
+        <AnimGround arr={arr} max={max}/>
         <Footer/>
     </div>
   );
