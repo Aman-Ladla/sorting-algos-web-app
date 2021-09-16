@@ -31,11 +31,11 @@ function Footer() {
     return (
         <div className={"row footer"} >
 
-            <div className={"col"} style={{textAlign: "center"}}>
+            <div className={"col"} style={{textAlign: "center",height: "100%",display: "flex",justifyContent: "center", alignItems:"center"}}>
                 <button
                     className={"sortButton"}
                     onClick={setClickedImpl}
-                    style={{backgroundColor: clicked ? "grey" : "limegreen", borderRadius: "10px"}}
+                    style={{backgroundColor: clicked ? "grey" : "limegreen", borderRadius: "10px",fontSize: "2.4vh"}}
                 >
                     Sort!
                 </button>
