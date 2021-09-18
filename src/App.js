@@ -8,11 +8,15 @@ import createArray  from "./CreatingArr";
 
 function App() {
 
-    const[arr, setArr] = useState(createArray(14));
+    const[arr, setArr] = useState(createArray(25));
 
     function updateArr(size){
         setArr(createArray(size));
     }
+
+    // function updateSpeed(){
+    //     setSpeed()
+    // }
 
     let max = Math.max(...arr);
 
@@ -20,7 +24,7 @@ function App() {
     <div className="App">
         <Header/>
         <Controls update={updateArr}/>
-        <AnimGround arr={arr} max={max}/>
+        <AnimGround arr={arr} max={max} speed/>
         <Footer/>
     </div>
   );

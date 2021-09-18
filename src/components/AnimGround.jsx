@@ -1,3 +1,6 @@
+import Anime, {anime} from 'react-anime';
+import Bar from "./Bar";
+
 function AnimGround(props) {
 
     let arr = props.arr;
@@ -5,6 +8,8 @@ function AnimGround(props) {
     let heightFactor = 350 / props.max;
 
     let size = arr.length;
+
+    let translate = 1000/size;
 
     let flag = false;
 
@@ -14,52 +19,67 @@ function AnimGround(props) {
 
     console.log(arr);
 
-    if (size > 25) {
+    if (size > 30) {
         flag = true;
     }
 
+    function brain(index, value){
+        if(index === 0){
+            return (
+                <Anime duration={1000} translateX={translate * 20} easing={"easeInOutQuad"}>
+                    <Bar
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={flag}
+                    />
+                </Anime>
+            )
+        }
+        else if(index === 20){
+            return (
+                <Anime duration={1000} translateX={-translate * 20} easing={"easeInOutQuad"}>
+                    <Bar
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={flag}
+                    />
+                </Anime>
+            )
+        }
+        else{
+            return(
+                <Bar
+                    arr={arr}
+                    index={index}
+                    heightFactor={heightFactor}
+                    size={size}
+                    value={value}
+                    flag={flag}
+                />
+            )
+        }
+    }
 
     return (
         <div className="animContainer">
             <div className="anim align-content-center">
 
+                {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
 
-                            <div
-                                key={index}
-                                className={"align-items-center"}
-                                style={
-                                    {
-                                        height: arr.at(index) * heightFactor + 100,
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignContent: "center",
-                                        marginTop: "10px",
-                                    }
-                                }>
-
-                                <div style={{
-                                    height: arr.at(index) * heightFactor + 50,
-                                    width: 1000 / size,
-                                    display: "flex",
-                                    justifyContent: "center",
-                                }}>
-                                    <div style={{
-                                        height: arr.at(index) * heightFactor + 50,
-                                        width: 6000 / (size * 7),
-                                        backgroundColor: "lightgreen"
-                                    }}>
-                                        {!flag && <div>
-                                            <p style={{marginBottom: "0"}}>{value}</p>
-                                        </div>}
-                                    </div>
-                                </div>
-                            </div>
+                            brain(index, value)
                         );
                     }
                 )
                 }
+                {/*</Anime>*/}
 
             </div>
         </div>
