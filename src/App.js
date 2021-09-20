@@ -12,6 +12,14 @@ function App() {
 
     const[speed, setSpeed] = useState(300);
 
+    const[states, setStates] = useState(
+        {
+            i:-1,
+            j:-1,
+            flag:false
+        }
+    );
+
     function updateArr(size){
         setArr(createArray(size));
     }
@@ -20,8 +28,13 @@ function App() {
         setSpeed(speed);
     }
 
-    function modifyArr(array){
+    function modifyArr(array, x, y, flagg){
         setArr([...array]);
+        setStates({
+           i:x,
+           j:y,
+           flag:flagg
+        });
         // console.log(arr);
     }
 
@@ -35,7 +48,7 @@ function App() {
     <div className="App">
         <Header/>
         <Controls update={updateArr} speed={speed} updateSpeed={setSpeedImpl}/>
-        <AnimGround arr={arr} max={max}/>
+        <AnimGround arr={arr} max={max} states={states} speed={speed}/>
         <Footer arr={arr} update={modifyArr} speed={speed}/>
     </div>
   );

@@ -11,7 +11,11 @@ function AnimGround(props) {
 
     let translate = 1000/size;
 
-    let flag = false;
+    let sizeFlag = false;
+
+    let speed = props.speed;
+
+    let {i, j, flag} = props.states;
 
     // console.log("received");
     //
@@ -20,36 +24,36 @@ function AnimGround(props) {
     // console.log("received "+arr);
 
     if (size > 30) {
-        flag = true;
+        sizeFlag = true;
     }
 
-    function brain(index, value, i, j){
-        if(index === i){
+    function brain(index, value, i, j, flag){
+        if(index === i && flag){
             return (
-                // <Anime duration={100} translateX={translate * (j-i)} easing={"easeInOutQuad"}>
+                <Anime duration={speed-10} translateX={translate * (j-i)} easing={"easeInOutQuad"}>
                     <Bar
                         arr={arr}
                         index={index}
                         heightFactor={heightFactor}
                         size={size}
                         value={value}
-                        flag={flag}
+                        flag={sizeFlag}
                     />
-                // </Anime>
+                </Anime>
             )
         }
-        else if(index === j){
+        else if(index === j && flag){
             return (
-                // <Anime duration={100} translateX={-translate * (j-i)} easing={"easeInOutQuad"}>
+                <Anime duration={speed-10} translateX={-translate * (j-i)} easing={"easeInOutQuad"}>
                     <Bar
                         arr={arr}
                         index={index}
                         heightFactor={heightFactor}
                         size={size}
                         value={value}
-                        flag={flag}
+                        flag={sizeFlag}
                     />
-                // </Anime>
+                </Anime>
             )
         }
         else{
@@ -60,7 +64,7 @@ function AnimGround(props) {
                     heightFactor={heightFactor}
                     size={size}
                     value={value}
-                    flag={flag}
+                    flag={sizeFlag}
                 />
             )
         }
@@ -73,7 +77,7 @@ function AnimGround(props) {
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
-                            brain(index, value, 0, 3)
+                            brain(index, value, i, j, flag)
                         );
                     }
                 )
