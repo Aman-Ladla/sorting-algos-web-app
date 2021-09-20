@@ -8,7 +8,7 @@ function Bar(props){
     let value = props.value;
     let flag = props.flag;
 
-    console.log(props);
+    // console.log(props);
 
     return(
         <div

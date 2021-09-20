@@ -8,10 +8,21 @@ import createArray  from "./CreatingArr";
 
 function App() {
 
-    const[arr, setArr] = useState(createArray(25));
+    const[arr, setArr] = useState(createArray(10));
+
+    const[speed, setSpeed] = useState(300);
 
     function updateArr(size){
         setArr(createArray(size));
+    }
+
+    function setSpeedImpl(speed){
+        setSpeed(speed);
+    }
+
+    function modifyArr(array){
+        setArr([...array]);
+        // console.log(arr);
     }
 
     // function updateSpeed(){
@@ -23,9 +34,9 @@ function App() {
   return (
     <div className="App">
         <Header/>
-        <Controls update={updateArr}/>
-        <AnimGround arr={arr} max={max} speed/>
-        <Footer/>
+        <Controls update={updateArr} speed={speed} updateSpeed={setSpeedImpl}/>
+        <AnimGround arr={arr} max={max}/>
+        <Footer arr={arr} update={modifyArr} speed={speed}/>
     </div>
   );
 }

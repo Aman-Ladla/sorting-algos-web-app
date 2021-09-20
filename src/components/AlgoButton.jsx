@@ -14,10 +14,6 @@ function AlgoButton(props){
         setOnButton(false);
     }
 
-    function click(){
-        setClicked(true);
-    }
-
     return(
         <button className={"algoButtons"}
                 onMouseOver={inSubmit}

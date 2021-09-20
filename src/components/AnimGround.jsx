@@ -1,4 +1,4 @@
-import Anime, {anime} from 'react-anime';
+import Anime from 'react-anime';
 import Bar from "./Bar";
 
 function AnimGround(props) {
@@ -13,20 +13,20 @@ function AnimGround(props) {
 
     let flag = false;
 
-    console.log("received");
-
-    console.log(props.max);
-
-    console.log(arr);
+    // console.log("received");
+    //
+    // console.log(props.max);
+    //
+    // console.log("received "+arr);
 
     if (size > 30) {
         flag = true;
     }
 
-    function brain(index, value){
-        if(index === 0){
+    function brain(index, value, i, j){
+        if(index === i){
             return (
-                <Anime duration={1000} translateX={translate * 20} easing={"easeInOutQuad"}>
+                // <Anime duration={100} translateX={translate * (j-i)} easing={"easeInOutQuad"}>
                     <Bar
                         arr={arr}
                         index={index}
@@ -35,12 +35,12 @@ function AnimGround(props) {
                         value={value}
                         flag={flag}
                     />
-                </Anime>
+                // </Anime>
             )
         }
-        else if(index === 20){
+        else if(index === j){
             return (
-                <Anime duration={1000} translateX={-translate * 20} easing={"easeInOutQuad"}>
+                // <Anime duration={100} translateX={-translate * (j-i)} easing={"easeInOutQuad"}>
                     <Bar
                         arr={arr}
                         index={index}
@@ -49,7 +49,7 @@ function AnimGround(props) {
                         value={value}
                         flag={flag}
                     />
-                </Anime>
+                // </Anime>
             )
         }
         else{
@@ -73,8 +73,7 @@ function AnimGround(props) {
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
-
-                            brain(index, value)
+                            brain(index, value, 0, 3)
                         );
                     }
                 )

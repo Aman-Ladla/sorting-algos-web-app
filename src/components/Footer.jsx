@@ -1,6 +1,7 @@
 import {useState} from "react";
+import BubbleSort from "../algorithms/BubbleSort";
 
-function Footer() {
+function Footer(props) {
 
     // const [onAboutButton, setAboutOnButton] = useState(false);
     //
@@ -24,12 +25,13 @@ function Footer() {
     //     setTeamOnButton(false);
     // }
 
-    function setClickedImpl(){
+    async function setClickedImpl(){
         setClicked(!clicked);
+        await BubbleSort(props.arr, props.update, props.speed);
     }
 
     return (
-        <div className={"row footer"} >
+        <div className={"footer"} >
 
             <div className={"col"} style={{textAlign: "center",height: "100%",display: "flex",justifyContent: "center", alignItems:"center"}}>
                 <button

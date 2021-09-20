@@ -2,9 +2,9 @@ import {useState} from 'react';
 
 function Controls(props) {
 
-    const [size, setSize] = useState(25);
+    const [size, setSize] = useState(10);
 
-    const [speed, setSpeed] = useState(1000);
+    const [speed, setSpeed] = useState(props.speed);
 
     const [onButton, setOnButton] = useState(false);
 
@@ -25,6 +25,7 @@ function Controls(props) {
     function setSpeedImpl(event) {
         let temp = event.target.value;
         setSpeed(temp);
+        props.updateSpeed(temp);
     }
 
     return (
@@ -54,7 +55,7 @@ function Controls(props) {
             <div>
                 <label className='labels' style = {{fontSize: "2.4vh",}}>Speed</label>
                 <input onChange={setSpeedImpl}
-                       type="range" min="1000" max="5000" value={speed}
+                       type="range" min="10" max="1000" value={speed}
                        id="myRange">
                 </input>
             </div>
