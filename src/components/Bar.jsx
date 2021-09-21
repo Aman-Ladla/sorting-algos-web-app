@@ -7,6 +7,7 @@ function Bar(props){
     let size = arr.length;
     let value = props.value;
     let flag = props.flag;
+    let Color = props.Color; 
 
     // console.log(props);
 
@@ -32,7 +33,7 @@ function Bar(props){
                 <div style={{
                     height: arr.at(index) * heightFactor + 50,
                     width: 6000 / (size * 7),
-                    backgroundColor: "lightgreen"
+                    backgroundColor: Color
                 }}>
                     {!flag && <div>
                         <p style={{marginBottom: "0"}}>{value}</p>
