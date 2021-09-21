@@ -28,10 +28,12 @@ function AnimGround(props) {
     }
 
     function brain(index, value, i, j, flag){
+        let color = index===i || index===j ? "red" : "lightgreen";
         if(index === i && flag){
             return (
                 <Anime duration={speed-10} translateX={translate * (j-i)} easing={"easeInOutQuad"}>
                     <Bar
+                        Color = {color}
                         arr={arr}
                         index={index}
                         heightFactor={heightFactor}
@@ -46,6 +48,7 @@ function AnimGround(props) {
             return (
                 <Anime duration={speed-10} translateX={-translate * (j-i)} easing={"easeInOutQuad"}>
                     <Bar
+                        Color = {color}
                         arr={arr}
                         index={index}
                         heightFactor={heightFactor}
@@ -59,6 +62,7 @@ function AnimGround(props) {
         else{
             return(
                 <Bar
+                    Color = {color}
                     arr={arr}
                     index={index}
                     heightFactor={heightFactor}
