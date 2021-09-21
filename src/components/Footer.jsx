@@ -1,5 +1,6 @@
 import {useState} from "react";
 import BubbleSort from "../algorithms/BubbleSort";
+import InsertionSort from "../algorithms/InsertionSort";
 
 function Footer(props) {
 
@@ -33,7 +34,18 @@ function Footer(props) {
         if(!isSorted && !inProcess) {
             // setClicked(isSorted);
             props.setInProcess(true);
-            await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+            switch(props.algoID){
+                case 1:
+                    await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    break;
+                case 2:
+                    await InsertionSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    break;
+                default:
+                    console.log("Select an Algorithm");
+                    props.setInProcess(false);
+            }
+            
         }
     }
 

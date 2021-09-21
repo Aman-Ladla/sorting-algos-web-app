@@ -24,6 +24,12 @@ function App() {
 
     const [isSorted, setIsSorted] = useState(false);
 
+    const [selectedAlgo, setAlgo] = useState(-1);
+
+    function setAlgoImpl(i) {
+        setAlgo(i);
+    }
+
     function setIsSortedImpl(flag) {
         setIsSorted(flag);
     }
@@ -59,7 +65,8 @@ function App() {
 
     return (
         <div className="App">
-            <Header/>
+            <Header
+                algoID={setAlgoImpl}/>
             <Controls
                 update={updateArr}
                 speed={speed}
@@ -83,6 +90,7 @@ function App() {
                 setInProcess={setInProcessImpl}
                 isSorted={isSorted}
                 setIsSorted={setIsSortedImpl}
+                algoID = {selectedAlgo}
             />
         </div>
     );
