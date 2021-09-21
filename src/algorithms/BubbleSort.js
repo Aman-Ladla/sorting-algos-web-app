@@ -22,6 +22,7 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress) {
         }
     }
 
+    update(arr, -1, -1, false);
     setIsSorted(true);
     setInProgress(false);
 

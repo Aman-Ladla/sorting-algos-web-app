@@ -33,7 +33,6 @@ function Controls(props) {
     function setSpeedImpl(event) {
         if(!inProcess) {
             let temp = event.target.value;
-            props.setIsSorted(false);
             setSpeed(temp);
             props.updateSpeed(810 - temp);
         }

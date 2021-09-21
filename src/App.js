@@ -72,8 +72,9 @@ function App() {
                 arr={arr}
                 max={max}
                 states={states}
-                speed={speed
-                }/>
+                speed={speed}
+                isSorted={isSorted}
+            />
             <Footer
                 arr={arr}
                 update={modifyArr}
