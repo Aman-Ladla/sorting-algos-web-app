@@ -34,6 +34,8 @@ body{
     height:9.5%;
 }
 
+/*Sub Header styles*/
+
 .controls{
     display: flex;
     justify-content: space-evenly;
@@ -43,8 +45,6 @@ body{
     flex-direction: row;
     align-items: center
 }
-
-/*Sub Header styles*/
 
 .labels{
     color: white;
@@ -59,6 +59,24 @@ body{
 
 .newArrayButton:hover{
     color: white;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 135px;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
 }
 
 /*Footer styles*/

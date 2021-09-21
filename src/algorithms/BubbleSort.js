@@ -1,6 +1,6 @@
 
 
-async function BubbleSort(arr, update, speed) {
+async function BubbleSort(arr, update, speed, setIsSorted, setInProgress) {
 
     let flag;
 
@@ -21,6 +21,9 @@ async function BubbleSort(arr, update, speed) {
             break;
         }
     }
+
+    setIsSorted(true);
+    setInProgress(false);
 
     console.log("sorted array is " + arr);
 
