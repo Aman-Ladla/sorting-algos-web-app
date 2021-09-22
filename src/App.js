@@ -24,6 +24,8 @@ function App() {
 
     const [isSorted, setIsSorted] = useState(false);
 
+    const [bubbleSortedIndex, setBSI] = useState(-1);
+
     function setIsSortedImpl(flag) {
         setIsSorted(flag);
     }
@@ -41,14 +43,15 @@ function App() {
         setSpeed(speed);
     }
 
-    function modifyArr(array, x, y, flagg) {
+    function modifyArr(array, w, x, y, flagg) {
         setArr([...array]);
+        setBSI(w);
         setStates({
             i: x,
             j: y,
             flag: flagg
         });
-        // console.log(arr);
+        // console.log(w);
     }
 
     // function updateSpeed(){
@@ -74,6 +77,7 @@ function App() {
                 states={states}
                 speed={speed}
                 isSorted={isSorted}
+                BSI={bubbleSortedIndex}
             />
             <Footer
                 arr={arr}
