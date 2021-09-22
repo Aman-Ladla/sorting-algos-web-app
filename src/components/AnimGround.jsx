@@ -1,3 +1,6 @@
+import Anime from 'react-anime';
+import Bar from "./Bar";
+
 function AnimGround(props) {
 
     let arr = props.arr;
@@ -6,60 +9,86 @@ function AnimGround(props) {
 
     let size = arr.length;
 
-    let flag = false;
+    let translate = 1000/size;
 
-    console.log("received");
+    let sizeFlag = false;
 
-    console.log(props.max);
+    let speed = props.speed;
 
-    console.log(arr);
+    let isSorted = props.isSorted;
 
-    if (size > 25) {
-        flag = true;
+    let {i, j, flag} = props.states;
+
+    // console.log("received");
+    //
+    // console.log(props.max);
+    //
+    // console.log("received "+arr);
+
+    if (size > 30) {
+        sizeFlag = true;
     }
 
+    function brain(index, value, i, j, flag){
+        let color = isSorted ? "lightBlue" : index===i || index===j ? "#ff5e5e" : "lightgreen";
+        if(index === i && flag){
+            return (
+                <Anime duration={speed-10} translateX={translate * (j-i)} easing={"easeInOutQuad"}>
+                    <Bar
+                        Color = {color}
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={sizeFlag}
+                    />
+                </Anime>
+            )
+        }
+        else if(index === j && flag){
+            return (
+                <Anime duration={speed-10} translateX={-translate * (j-i)} easing={"easeInOutQuad"}>
+                    <Bar
+                        Color = {color}
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={sizeFlag}
+                    />
+                </Anime>
+            )
+        }
+        else{
+            return(
+                <Bar
+                    Color = {color}
+                    arr={arr}
+                    index={index}
+                    heightFactor={heightFactor}
+                    size={size}
+                    value={value}
+                    flag={sizeFlag}
+                />
+            )
+        }
+    }
 
     return (
         <div className="animContainer">
             <div className="anim align-content-center">
 
+                {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
-
-                            <div
-                                key={index}
-                                className={"align-items-center"}
-                                style={
-                                    {
-                                        height: arr.at(index) * heightFactor + 100,
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignContent: "center",
-                                        marginTop: "10px",
-                                    }
-                                }>
-
-                                <div style={{
-                                    height: arr.at(index) * heightFactor + 50,
-                                    width: 1000 / size,
-                                    display: "flex",
-                                    justifyContent: "center",
-                                }}>
-                                    <div style={{
-                                        height: arr.at(index) * heightFactor + 50,
-                                        width: 6000 / (size * 7),
-                                        backgroundColor: "lightgreen"
-                                    }}>
-                                        {!flag && <div>
-                                            <p style={{marginBottom: "0"}}>{value}</p>
-                                        </div>}
-                                    </div>
-                                </div>
-                            </div>
+                            brain(index, value, i, j, flag)
                         );
                     }
                 )
                 }
+                {/*</Anime>*/}
 
             </div>
         </div>

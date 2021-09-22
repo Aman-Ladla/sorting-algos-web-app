@@ -1,12 +1,17 @@
 import {useState} from "react";
+import BubbleSort from "../algorithms/BubbleSort";
 
-function Footer() {
+function Footer(props) {
 
     // const [onAboutButton, setAboutOnButton] = useState(false);
     //
     // const [onTeamButton, setTeamOnButton] = useState(false);
 
-    const[clicked, setClicked] = useState(false);
+    let isSorted = props.isSorted;
+
+    let inProcess = props.inProcess;
+
+    // const[clicked, setClicked] = useState(false);
 
     // function inAboutUs() {
     //     setAboutOnButton(true);
@@ -24,18 +29,22 @@ function Footer() {
     //     setTeamOnButton(false);
     // }
 
-    function setClickedImpl(){
-        setClicked(!clicked);
+    async function setClickedImpl(){
+        if(!isSorted && !inProcess) {
+            // setClicked(isSorted);
+            props.setInProcess(true);
+            await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+        }
     }
 
     return (
-        <div className={"row footer"} >
+        <div className={"footer"} >
 
             <div className={"col"} style={{textAlign: "center",height: "100%",display: "flex",justifyContent: "center", alignItems:"center"}}>
                 <button
                     className={"sortButton"}
                     onClick={setClickedImpl}
-                    style={{backgroundColor: clicked ? "grey" : "limegreen", borderRadius: "10px",fontSize: "2.4vh"}}
+                    style={{backgroundColor: inProcess || isSorted ? "grey" : "limegreen", borderRadius: "10px",fontSize: "2.4vh"}}
                 >
                     Sort!
                 </button>
