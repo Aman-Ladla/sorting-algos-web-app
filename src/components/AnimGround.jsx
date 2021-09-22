@@ -101,7 +101,7 @@ function AnimGround(props) {
                 console.log("should translate Y");
                 if(shouldMoveUp){
                     shouldMoveUp = false;
-                return <Anime duration={0} translateY = {-translate} easing={"linear"}>
+                return <Anime duration={100} translateY = {0} easing={"linear"}>
                     <Bar
                         Color = {color}
                         arr={arr}
