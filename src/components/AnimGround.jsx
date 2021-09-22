@@ -17,7 +17,7 @@ function AnimGround(props) {
 
     let isSorted = props.isSorted;
 
-    let {i, j, flag} = props.states;
+    let {i, j, flag,shouldMoveUp} = props.states;
 
     // console.log("received");
     //
@@ -29,7 +29,7 @@ function AnimGround(props) {
         sizeFlag = true;
     }
 
-    function brain(index, value, i, j, flag){
+    function BubbleBrain(index, value, i, j, flag){
         let color = isSorted ? "lightBlue" : index===i || index===j ? "#ff5e5e" : "lightgreen";
         if(index === i && flag){
             return (
@@ -76,6 +76,92 @@ function AnimGround(props) {
         }
     }
 
+    function InsertBrain(index,value,i,j,flag){
+        let color = isSorted ? "lightBlue" : index===i ? "red" : index===j ? "#ff5e5e" : "lightGreen";
+        if(index===i){
+            console.log(index,flag);
+            if(flag){
+                return <Anime 
+                duration={speed-10} 
+                translateX= {translate*(j-i)}
+                delay = {100}
+                easing={"easeInOutQuad"}>
+                    <Bar
+                        Color = {color}
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={sizeFlag}
+                    />
+                </Anime>
+            }
+            else{
+                console.log("should translate Y");
+                if(shouldMoveUp){
+                    shouldMoveUp = false;
+                return <Anime duration={0} translateY = {-translate} easing={"linear"}>
+                    <Bar
+                        Color = {color}
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={sizeFlag}
+                    />
+                </Anime>
+                }
+                else{
+                    shouldMoveUp = true;
+                return <Anime duration={0} translateY = {translate} easing={"linear"}>
+                    <Bar
+                        Color = {color}
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={sizeFlag}
+                    />
+                </Anime>
+                }
+            }
+        }
+        else if(index===j){
+            console.log(index,flag);
+            if(flag){
+                console.log("should translate X");
+                return <Anime duration={speed-10} translateX = {-translate*(j-i)} easing={"easeInOutQuad"}>
+                    <Bar
+                        Color = {color}
+                        arr={arr}
+                        index={index}
+                        heightFactor={heightFactor}
+                        size={size}
+                        value={value}
+                        flag={sizeFlag}
+                    />
+                </Anime>
+            }
+        }
+        else{
+            return(
+                <Bar
+                    Color = {color}
+                    arr={arr}
+                    index={index}
+                    heightFactor={heightFactor}
+                    size={size}
+                    value={value}
+                    flag={sizeFlag}
+                />
+            )
+        }
+
+    }
+
     return (
         <div className="animContainer">
             <div className="anim align-content-center">
@@ -83,7 +169,7 @@ function AnimGround(props) {
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
-                            brain(index, value, i, j, flag)
+                            InsertBrain(index, value, i, j, flag)
                         );
                     }
                 )

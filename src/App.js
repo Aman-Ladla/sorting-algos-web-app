@@ -16,7 +16,8 @@ function App() {
         {
             i: -1,
             j: -1,
-            flag: false
+            flag: false,
+            shouldMoveUp: false
         }
     );
 
@@ -47,13 +48,15 @@ function App() {
         setSpeed(speed);
     }
 
-    function modifyArr(array, x, y, flagg) {
+    function modifyArr(array, x, y, flagg, shouldMoveUp) {
         setArr([...array]);
         setStates({
             i: x,
             j: y,
-            flag: flagg
+            flag: flagg,
+            shouldMoveUp: shouldMoveUp,
         });
+        console.log(states);
         // console.log(arr);
     }
 

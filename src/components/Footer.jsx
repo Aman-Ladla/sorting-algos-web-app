@@ -1,4 +1,6 @@
 import {useState} from "react";
+import {toast} from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
 import BubbleSort from "../algorithms/BubbleSort";
 import InsertionSort from "../algorithms/InsertionSort";
 
@@ -29,7 +31,7 @@ function Footer(props) {
     // function outTeam() {
     //     setTeamOnButton(false);
     // }
-
+    toast.configure();
     async function setClickedImpl(){
         if(!isSorted && !inProcess) {
             // setClicked(isSorted);
@@ -42,7 +44,7 @@ function Footer(props) {
                     await InsertionSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
                     break;
                 default:
-                    console.log("Select an Algorithm");
+                    toast("Select an Algorithm",{position:toast.POSITION.BOTTOM_RIGHT,autoClose:2000});
                     props.setInProcess(false);
             }
             
