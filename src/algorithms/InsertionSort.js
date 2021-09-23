@@ -16,7 +16,6 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress){
             j--;  
         }
         arr[j+1] = value;
-        update(arr,arr.indexOf(value),-1,false,false);
         update(arr,arr.indexOf(value),-1,false,true);
         await new Promise(done => setTimeout(() => done(), speed));
    } 

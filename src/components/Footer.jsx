@@ -3,6 +3,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import BubbleSort from "../algorithms/BubbleSort";
 import InsertionSort from "../algorithms/InsertionSort";
+import InsertionSort1 from "../algorithms/InsertionSort1";
 
 function Footer(props) {
 
@@ -41,7 +42,7 @@ function Footer(props) {
                     await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
                     break;
                 case 2:
-                    await InsertionSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    await InsertionSort1(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
                     break;
                 default:
                     toast("Select an Algorithm",{position:toast.POSITION.BOTTOM_RIGHT,autoClose:2000});

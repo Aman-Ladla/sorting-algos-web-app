@@ -28,10 +28,19 @@ function App() {
 
     const[shouldMoveUp, setUpBool] = useState(false);
 
+    const [bubbleSortedIndex, setBSI] = useState(-1);
+
+    const [insertStates, setInsertStates] = useState(
+        {
+            f1: -1,
+            f2: -1,
+            f3: -1,
+        }
+    );
+
     function setAlgoImpl(i) {
         setAlgo(i);
     }
-    const [bubbleSortedIndex, setBSI] = useState(-1);
 
     function setIsSortedImpl(flag) {
         setIsSorted(flag);
@@ -50,16 +59,6 @@ function App() {
         setSpeed(speed);
     }
 
-    function modifyArrInsert(array, x, y, flagg, shouldMoveUp) {
-        setArr([...array]);
-        setUpBool(shouldMoveUp);
-        setStates({
-            i: x,
-            j: y,
-            flag: flagg,
-        });
-        // console.log(w);
-    }
     function modifyArrBubble(array, w, x, y, flagg) {
         setArr([...array]);
         setBSI(w);
@@ -71,9 +70,32 @@ function App() {
         // console.log(w);
     }
 
-    // function updateSpeed(){
-    //     setSpeed()
-    // }
+    function modifyArrInsert(array, x, y, flagg, shouldMoveUp) {
+        setArr([...array]);
+        setUpBool(shouldMoveUp);
+        setStates({
+            i: x,
+            j: y,
+            flag: flagg,
+        });
+        // console.log(w);
+    }
+
+    function modifyArrInsert1(array, x, y, f1, f2, f3, flagg){
+        setArr([...array]);
+        setStates({
+            i: x,
+            j: y,
+            flag: flagg,
+        });
+        setInsertStates(
+            {
+                f1: f1,
+                f2: f2,
+                f3: f3,
+            }
+        )
+    }
 
     let max = Math.max(...arr);
 
@@ -98,10 +120,11 @@ function App() {
                 algoID = {selectedAlgo}
                 BSI={bubbleSortedIndex}
                 shouldMoveUp = {shouldMoveUp}
+                insertionStates={insertStates}
             />
             <Footer
                 arr={arr}
-                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : modifyArrBubble}
+                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert1 : modifyArrBubble}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}
