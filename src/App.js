@@ -56,7 +56,6 @@ function App() {
             flag: flagg,
             shouldMoveUp: shouldMoveUp,
         });
-        console.log(states);
         // console.log(arr);
     }
 
@@ -84,6 +83,7 @@ function App() {
                 states={states}
                 speed={speed}
                 isSorted={isSorted}
+                algoID = {selectedAlgo}
             />
             <Footer
                 arr={arr}

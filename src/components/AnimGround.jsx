@@ -19,6 +19,8 @@ function AnimGround(props) {
 
     let {i, j, flag,shouldMoveUp} = props.states;
 
+    let algoID = props.algoID;
+
     // console.log("received");
     //
     // console.log(props.max);
@@ -27,6 +29,17 @@ function AnimGround(props) {
 
     if (size > 30) {
         sizeFlag = true;
+    }
+
+    function selectBrain(index, value, i, j, flag,algoID){
+        switch(algoID){
+            case 1:
+                return BubbleBrain(index, value, i, j, flag);
+            case 2:
+                return InsertBrain(index, value, i, j, flag);
+            default:
+                return BubbleBrain(index, value, i, j, flag);
+        }
     }
 
     function BubbleBrain(index, value, i, j, flag){
@@ -77,14 +90,12 @@ function AnimGround(props) {
     }
 
     function InsertBrain(index,value,i,j,flag){
-        let color = isSorted ? "lightBlue" : index===i ? "red" : index===j ? "#ff5e5e" : "lightGreen";
+        let color = isSorted ? "lightBlue" : index===i || index===j ? "#ff5e5e" : "lightGreen";
         if(index===i){
-            console.log(index,flag);
             if(flag){
                 return <Anime 
                 duration={speed-10} 
                 translateX= {translate*(j-i)}
-                delay = {100}
                 easing={"easeInOutQuad"}>
                     <Bar
                         Color = {color}
@@ -98,10 +109,8 @@ function AnimGround(props) {
                 </Anime>
             }
             else{
-                console.log("should translate Y");
                 if(shouldMoveUp){
-                    shouldMoveUp = false;
-                return <Anime duration={speed-20} translateY = {0} easing={"easeInOutQuad"}>
+                return <Anime duration={speed-10} translateY = {0} scaleY={1} easing={"easeInOutQuad"}>
                     <Bar
                         Color = {color}
                         arr={arr}
@@ -114,31 +123,29 @@ function AnimGround(props) {
                 </Anime>
                 }
                 else{
-                    shouldMoveUp = true;
-                return <Anime duration={0} translateY = {translate} easing={"easeInOutQuad"}>
+                return <Anime duration={0} translateY = {translate} scaleY={0.5} easing={"easeInOutQuad"}>
                     <Bar
                         Color = {color}
                         arr={arr}
                         index={index}
-                        heightFactor={heightFactor}
+                        heightFactor={0}
                         size={size}
                         value={value}
                         flag={sizeFlag}
+                        scalingFlag = {true}
                     />
                 </Anime>
                 }
             }
         }
         else if(index===j){
-            console.log(index,flag);
             if(flag){
-                console.log("should translate X");
                 return <Anime duration={speed-10} translateX = {-translate*(j-i)} easing={"easeInOutQuad"}>
                     <Bar
                         Color = {color}
                         arr={arr}
                         index={index}
-                        heightFactor={heightFactor}
+                        heightFactor={0}
                         size={size}
                         value={value}
                         flag={sizeFlag}
@@ -169,7 +176,7 @@ function AnimGround(props) {
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
-                            InsertBrain(index, value, i, j, flag)
+                            selectBrain(index, value, i, j, flag,algoID)
                         );
                     }
                 )
