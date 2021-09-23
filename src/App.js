@@ -16,7 +16,7 @@ function App() {
         {
             i: -1,
             j: -1,
-            flag: false
+            flag: false,
         }
     );
 
@@ -24,6 +24,13 @@ function App() {
 
     const [isSorted, setIsSorted] = useState(false);
 
+    const [selectedAlgo, setAlgo] = useState(-1);
+
+    const[shouldMoveUp, setUpBool] = useState(false);
+
+    function setAlgoImpl(i) {
+        setAlgo(i);
+    }
     const [bubbleSortedIndex, setBSI] = useState(-1);
 
     function setIsSortedImpl(flag) {
@@ -43,13 +50,23 @@ function App() {
         setSpeed(speed);
     }
 
-    function modifyArr(array, w, x, y, flagg) {
+    function modifyArrInsert(array, x, y, flagg, shouldMoveUp) {
+        setArr([...array]);
+        setUpBool(shouldMoveUp);
+        setStates({
+            i: x,
+            j: y,
+            flag: flagg,
+        });
+        // console.log(w);
+    }
+    function modifyArrBubble(array, w, x, y, flagg) {
         setArr([...array]);
         setBSI(w);
         setStates({
             i: x,
             j: y,
-            flag: flagg
+            flag: flagg,
         });
         // console.log(w);
     }
@@ -62,7 +79,8 @@ function App() {
 
     return (
         <div className="App">
-            <Header/>
+            <Header
+                algoID={setAlgoImpl}/>
             <Controls
                 update={updateArr}
                 speed={speed}
@@ -77,16 +95,19 @@ function App() {
                 states={states}
                 speed={speed}
                 isSorted={isSorted}
+                algoID = {selectedAlgo}
                 BSI={bubbleSortedIndex}
+                shouldMoveUp = {shouldMoveUp}
             />
             <Footer
                 arr={arr}
-                update={modifyArr}
+                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : modifyArrBubble}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}
                 isSorted={isSorted}
                 setIsSorted={setIsSortedImpl}
+                algoID = {selectedAlgo}
             />
         </div>
     );

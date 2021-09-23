@@ -1,11 +1,12 @@
 import AlgoButton from "./AlgoButton";
 import {useState} from "react";
 
-function Header() {
+function Header(props) {
 
     const [selectedAlgo, setAlgo] = useState(-1);
 
     function setAlgoImpl(i) {
+        props.algoID(i);
         setAlgo(i);
     }
 
