@@ -17,7 +17,6 @@ function App() {
             i: -1,
             j: -1,
             flag: false,
-            shouldMoveUp: false
         }
     );
 
@@ -27,9 +26,12 @@ function App() {
 
     const [selectedAlgo, setAlgo] = useState(-1);
 
+    const[shouldMoveUp, setUpBool] = useState(false);
+
     function setAlgoImpl(i) {
         setAlgo(i);
     }
+    const [bubbleSortedIndex, setBSI] = useState(-1);
 
     function setIsSortedImpl(flag) {
         setIsSorted(flag);
@@ -48,15 +50,25 @@ function App() {
         setSpeed(speed);
     }
 
-    function modifyArr(array, x, y, flagg, shouldMoveUp) {
+    function modifyArrInsert(array, x, y, flagg, shouldMoveUp) {
         setArr([...array]);
+        setUpBool(shouldMoveUp);
         setStates({
             i: x,
             j: y,
             flag: flagg,
-            shouldMoveUp: shouldMoveUp,
         });
-        // console.log(arr);
+        // console.log(w);
+    }
+    function modifyArrBubble(array, w, x, y, flagg) {
+        setArr([...array]);
+        setBSI(w);
+        setStates({
+            i: x,
+            j: y,
+            flag: flagg,
+        });
+        // console.log(w);
     }
 
     // function updateSpeed(){
@@ -84,10 +96,12 @@ function App() {
                 speed={speed}
                 isSorted={isSorted}
                 algoID = {selectedAlgo}
+                BSI={bubbleSortedIndex}
+                shouldMoveUp = {shouldMoveUp}
             />
             <Footer
                 arr={arr}
-                update={modifyArr}
+                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : modifyArrBubble}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}

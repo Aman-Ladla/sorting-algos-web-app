@@ -21,6 +21,10 @@ function AnimGround(props) {
 
     let algoID = props.algoID;
 
+    let sortedIndex = props.BSI;
+
+    // console.log(props.BSI);
+    //
     // console.log("received");
     //
     // console.log(props.max);
@@ -43,7 +47,27 @@ function AnimGround(props) {
     }
 
     function BubbleBrain(index, value, i, j, flag){
-        let color = isSorted ? "lightBlue" : index===i || index===j ? "#ff5e5e" : "lightgreen";
+       let color;
+
+        if(isSorted){
+            color = "lightBlue";
+        }
+        else if(sortedIndex > 1 && index > size - sortedIndex){
+            color = "#f9fb5a";
+        }
+        else{
+            if(index===i || index===j){
+                color = "#ff5e5e"
+            }
+            else{
+                color = "lightgreen";
+            }
+        }
+
+        // let color =
+        //     isSorted ?
+        //     "lightBlue" : index===i || index===j ?
+        //         "#ff5e5e" : "lightgreen";
         if(index === i && flag){
             return (
                 <Anime duration={speed-10} translateX={translate * (j-i)} easing={"easeInOutQuad"}>

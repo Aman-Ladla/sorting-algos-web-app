@@ -63,7 +63,7 @@ function Controls(props) {
                 <label className='labels' style = {{fontSize: "2.4vh",}}>Array Size</label>
                 <input
                     style={{
-                        background:`linear-gradient(90deg, ${active} 0% ${(100/96) * (size - 4)}%, ${inactive} ${(100/96) * (size - 4)}% 100%)`
+                        background: !inProcess ? `linear-gradient(90deg, ${active} 0% ${(100/96) * (size - 4)}%, ${inactive} ${(100/96) * (size - 4)}% 100%)` : "grey"
                     }}
                     className={"slider"}
                     onChange={setSizeImpl}
@@ -75,7 +75,7 @@ function Controls(props) {
                 <label className='labels' style = {{fontSize: "2.4vh",}}>Speed</label>
                 <input
                     style={{
-                        background:`linear-gradient(90deg, ${active} 0% ${(10/79) * (speed - 10)}%, ${inactive} ${(10/79) * (speed - 10)}% 100%)`
+                        background:!inProcess ? `linear-gradient(90deg, ${active} 0% ${(10/79) * (speed - 10)}%, ${inactive} ${(10/79) * (speed - 10)}% 100%)` : "grey"
                     }}
                     onChange={setSpeedImpl}
                        className={"slider"}
