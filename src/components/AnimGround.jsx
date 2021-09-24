@@ -25,14 +25,6 @@ function AnimGround(props) {
 
     let sortedIndex = props.BSI;
 
-    // console.log(props.BSI);
-    //
-    // console.log("received");
-    //
-    // console.log(props.max);
-    //
-    // console.log("received "+arr);
-
     if (size > 30) {
         sizeFlag = true;
     }
