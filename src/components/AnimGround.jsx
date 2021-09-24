@@ -1,3 +1,4 @@
+import Bar from './Bar';
 import BubbleBrain from '../brain/BubbleBrain';
 import InsertBrain from '../brain/InsertBrain';
 
@@ -19,11 +20,7 @@ function AnimGround(props) {
 
     let {i, j, flag} = props.states;
 
-    let {f1, f2, f3} = props.insertionStates;
-
     let algoID = props.algoID;
-
-    let sortedIndex = props.BSI;
 
     if (size > 30) {
         sizeFlag = true;
@@ -32,11 +29,19 @@ function AnimGround(props) {
     function selectBrain(index, value, i, j, flag, algoID) {
         switch (algoID) {
             case 1:
-                return BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, sortedIndex);
+                return BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.BSI);
             case 2:
-                return InsertBrain(index, value, i, j, flag, f1, f2, f3, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
+                return InsertBrain(index, value, i, j, flag, props.insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             default:
-                return BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, sortedIndex);
+                return <Bar
+                    Color="lightgreen"
+                    arr={arr}
+                    index={index}
+                    heightFactor={heightFactor}
+                    size={size}
+                    value={value}
+                    flag={sizeFlag}
+                />
         }
     }
 
@@ -52,15 +57,6 @@ function AnimGround(props) {
                     }
                 )
                 }
-                {/*</Anime>*/}
-
-                {/*<Anime delay={anime.stagger(1000)} duration={1000} translateY = {400} easing={"easeInOutQuad"}*/}
-                {/*>*/}
-                {/*    <Anime delay={1000} duration={500} translateX = {-400} easing={"easeInOutQuad"}*/}
-                {/*    >*/}
-                {/*        <div id="Box" style={{ height: 50, width: 50, background: "#d3d" }} />*/}
-                {/*    </Anime>*/}
-                {/*</Anime>*/}
 
             </div>
         </div>

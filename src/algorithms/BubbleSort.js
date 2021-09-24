@@ -35,8 +35,6 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress) {
     setIsSorted(true);
     setInProgress(false);
 
-    console.log("sorted array is " + arr);
-
 }
 
 export default BubbleSort;

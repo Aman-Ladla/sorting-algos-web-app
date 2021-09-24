@@ -33,7 +33,6 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress){
     update(arr, -1, -1, -1, -1, -1, false);
     setIsSorted(true);
     setInProgress(false);
-    console.log(arr);
 
 }
 

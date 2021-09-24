@@ -84,6 +84,41 @@ function App() {
         )
     }
 
+    function selectAnimGround(algoID){
+        switch(algoID){
+            case 1:
+                return <AnimGround
+                arr={arr}
+                max={max}
+                states={states}
+                speed={speed}
+                isSorted={isSorted}
+                algoID = {selectedAlgo}
+                BSI={bubbleSortedIndex}
+            />
+            case 2:
+                return <AnimGround
+                arr={arr}
+                max={max}
+                states={states}
+                speed={speed}
+                isSorted={isSorted}
+                algoID = {selectedAlgo}
+                insertionStates={insertStates}
+            />
+            default:
+                return <AnimGround
+                arr={arr}
+                max={max}
+                states={states}
+                speed={speed}
+                isSorted={isSorted}
+                algoID = {selectedAlgo}
+            />
+
+        }
+    }
+
     let max = Math.max(...arr);
 
     return (
@@ -98,16 +133,7 @@ function App() {
                 setInProcess={setInProcessImpl}
                 setIsSorted={setIsSortedImpl}
             />
-            <AnimGround
-                arr={arr}
-                max={max}
-                states={states}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-                BSI={bubbleSortedIndex}
-                insertionStates={insertStates}
-            />
+            {selectAnimGround(selectedAlgo)}
             <Footer
                 arr={arr}
                 update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : modifyArrBubble}

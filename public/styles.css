@@ -7,6 +7,7 @@ html{
 
 body{
     height: 100%;
+    overflow: hidden;
 }
 .App{
     height: 100%;
@@ -90,7 +91,7 @@ body{
     left: 0;
     right: 0;
     height: 6.8%;
-    background-color:rgba(0,0,0,.74);
+    background-color:#424242;
     align-items: center;
 }
 
