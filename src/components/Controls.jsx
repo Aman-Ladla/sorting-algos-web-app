@@ -79,7 +79,7 @@ function Controls(props) {
                     }}
                     onChange={setSpeedImpl}
                        className={"slider"}
-                       type="range" min="1" max="800" value={speed}
+                       type="range" min="10" max="800" value={speed}
                        id="myRange">
                 </input>
             </div>

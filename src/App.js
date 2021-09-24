@@ -26,8 +26,6 @@ function App() {
 
     const [selectedAlgo, setAlgo] = useState(-1);
 
-    const[shouldMoveUp, setUpBool] = useState(false);
-
     const [bubbleSortedIndex, setBSI] = useState(-1);
 
     const [insertStates, setInsertStates] = useState(
@@ -70,18 +68,7 @@ function App() {
         // console.log(w);
     }
 
-    function modifyArrInsert(array, x, y, flagg, shouldMoveUp) {
-        setArr([...array]);
-        setUpBool(shouldMoveUp);
-        setStates({
-            i: x,
-            j: y,
-            flag: flagg,
-        });
-        // console.log(w);
-    }
-
-    function modifyArrInsert1(array, x, y, f1, f2, f3, flagg){
+    function modifyArrInsert(array, x, y, f1, f2, f3, flagg){
         setArr([...array]);
         setStates({
             i: x,
@@ -119,12 +106,11 @@ function App() {
                 isSorted={isSorted}
                 algoID = {selectedAlgo}
                 BSI={bubbleSortedIndex}
-                shouldMoveUp = {shouldMoveUp}
                 insertionStates={insertStates}
             />
             <Footer
                 arr={arr}
-                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert1 : modifyArrBubble}
+                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : modifyArrBubble}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}
