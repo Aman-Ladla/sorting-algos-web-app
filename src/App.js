@@ -33,6 +33,7 @@ function App() {
             f1: -1,
             f2: -1,
             f3: -1,
+            insertSI: -1
         }
     );
 
@@ -68,7 +69,7 @@ function App() {
         // console.log(w);
     }
 
-    function modifyArrInsert(array, x, y, f1, f2, f3, flagg){
+    function modifyArrInsert(array, x, y, f1, f2, f3, insertSI,flagg){
         setArr([...array]);
         setStates({
             i: x,
@@ -80,6 +81,7 @@ function App() {
                 f1: f1,
                 f2: f2,
                 f3: f3,
+                insertSI: insertSI,
             }
         )
     }

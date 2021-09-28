@@ -14,23 +14,23 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress){
     for(let i=1;i< arr.length;i++){
         let value = arr[i];
         let j = i-1;
-        update(arr, -1, j+1, 1, 0, 1, false);
+        update(arr, -1, j+1, 1, 0, 1, i,false);
         await new Promise(done => setTimeout(() => done(), speed));
         while(j>=0 && arr[j] > value){
-            update(arr, j, j+1, 0, 0, 0, true);
+            update(arr, j, j+1, 0, 0, 0,i+1,true);
             await new Promise(done => setTimeout(() => done(), speed));
             arr[j+1] = arr[j];
             arr[j] = value;
-            update(arr, -1, j, 1, 0, 0, false);
+            update(arr, -1, j, 1, 0, 0,i+1,false);
             j--;
         }
         arr[j+1] = value;
-        update(arr, -1, j+1, 1, 1, 1, false);
+        update(arr, -1, j+1, 1, 1, 1, i+1,false);
         await new Promise(done => setTimeout(() => done(), speed));
-        update(arr, -1, -1, -1, -1, -1, false);
+        update(arr, -1, -1, -1, -1, -1, i+1,false);
         // await new Promise(done => setTimeout(() => done(), speed));
     }
-    update(arr, -1, -1, -1, -1, -1, false);
+    update(arr, -1, -1, -1, -1, -1, -1,false);
     setIsSorted(true);
     setInProgress(false);
 
