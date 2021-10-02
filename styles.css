@@ -1,0 +1,125 @@
+/*Initial styles*/
+
+html{
+    background-color: white;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    overflow: hidden;
+}
+.App{
+    height: 100%;
+}
+#root{
+    height: 100%;
+}
+
+/*Header styles*/
+
+.algoButtons{
+    color: white;
+    background-color: black;
+    font-size: 2.4vh;
+    border: white;
+    height: 70%;
+    border-radius: 30px;
+    width: 150px;
+}
+
+.head{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    height:9.5%;
+}
+
+/*Sub Header styles*/
+
+.controls{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(0,0,0,.98);
+    height: 9%;
+    box-shadow: 0 1px 5px rgba(255,255,255,0.7);
+    flex-direction: row;
+    align-items: center
+}
+
+.labels{
+    color: white;
+    margin-right: 15px;
+}
+
+.newArrayButton{
+    background-color: rgba(0,0,0,.98);
+    border: none;
+    color: rgba(255,255,255,0.9);
+}
+
+.newArrayButton:hover{
+    color: white;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #4CAF50;
+    cursor: pointer;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 135px;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+}
+
+/*Footer styles*/
+
+.footer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6.8%;
+    background-color:#424242;
+    align-items: center;
+}
+
+.sortButton{
+    height: 85%;
+    background-color: limegreen;
+    color: black;
+    border: none;
+    width: 90px;
+}
+
+/*Animation ground styles*/
+
+.animContainer{
+    height: 74.7%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+}
+
+.anim{
+    height: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center; 
+    background-color:white;
+    align-content: center;
+}

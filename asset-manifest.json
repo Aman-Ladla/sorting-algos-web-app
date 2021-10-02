@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/sorting-algos-web-app/static/js/main.e0cc47a7.chunk.js",
+    "main.js.map": "/sorting-algos-web-app/static/js/main.e0cc47a7.chunk.js.map",
+    "runtime-main.js": "/sorting-algos-web-app/static/js/runtime-main.d64e20f6.js",
+    "runtime-main.js.map": "/sorting-algos-web-app/static/js/runtime-main.d64e20f6.js.map",
+    "static/css/2.ac82d3be.chunk.css": "/sorting-algos-web-app/static/css/2.ac82d3be.chunk.css",
+    "static/js/2.00d4beac.chunk.js": "/sorting-algos-web-app/static/js/2.00d4beac.chunk.js",
+    "static/js/2.00d4beac.chunk.js.map": "/sorting-algos-web-app/static/js/2.00d4beac.chunk.js.map",
+    "index.html": "/sorting-algos-web-app/index.html",
+    "static/css/2.ac82d3be.chunk.css.map": "/sorting-algos-web-app/static/css/2.ac82d3be.chunk.css.map",
+    "static/js/2.00d4beac.chunk.js.LICENSE.txt": "/sorting-algos-web-app/static/js/2.00d4beac.chunk.js.LICENSE.txt",
+    "static/media/sortingLogo.02a6098a.png": "/sorting-algos-web-app/static/media/sortingLogo.02a6098a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d64e20f6.js",
+    "static/css/2.ac82d3be.chunk.css",
+    "static/js/2.00d4beac.chunk.js",
+    "static/js/main.e0cc47a7.chunk.js"
+  ]
+}
