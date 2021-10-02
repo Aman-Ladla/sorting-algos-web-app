@@ -47,6 +47,7 @@ function Controls(props) {
                     borderRadius: "30px",
                     fontSize: "2.4vh",
                     height: "70%",
+                    fontWeight:500,
                 }}
                 onMouseOver={inSubmit}
                 onMouseOut={outSubmit}
@@ -60,7 +61,7 @@ function Controls(props) {
                 Create Random Array
             </button>
             <div>
-                <label className='labels' style = {{fontSize: "2.4vh",}}>Array Size</label>
+                <label className='labels' style = {{fontSize: "2.4vh",fontWeight:500,}}>Array Size</label>
                 <input
                     style={{
                         background: !inProcess ? `linear-gradient(90deg, ${active} 0% ${(100/96) * (size - 4)}%, ${inactive} ${(100/96) * (size - 4)}% 100%)` : "grey"
@@ -72,7 +73,7 @@ function Controls(props) {
                 </input>
             </div>
             <div>
-                <label className='labels' style = {{fontSize: "2.4vh",}}>Speed</label>
+                <label className='labels' style = {{fontSize: "2.4vh",fontWeight:500,}}>Speed</label>
                 <input
                     style={{
                         background:!inProcess ? `linear-gradient(90deg, ${active} 0% ${(10/79) * (speed - 10)}%, ${inactive} ${(10/79) * (speed - 10)}% 100%)` : "grey"

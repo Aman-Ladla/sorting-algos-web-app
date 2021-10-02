@@ -57,7 +57,12 @@ function Footer(props) {
                 <button
                     className={"sortButton"}
                     onClick={setClickedImpl}
-                    style={{backgroundColor: inProcess || isSorted ? "grey" : "limegreen", borderRadius: "10px",fontSize: "2.4vh"}}
+                    style={{
+                        backgroundColor: inProcess || isSorted ? "grey" : "limegreen",
+                        borderRadius: "10px",
+                        fontSize: "2.4vh",
+                        fontWeight:500
+                    }}
                 >
                     Sort!
                 </button>
