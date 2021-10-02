@@ -2,11 +2,16 @@ import {useState} from 'react';
 
 function Controls(props) {
 
-    const [size, setSize] = useState(14);
+    const [size, setSize] = useState(10);
 
-    const [speed, setSpeed] = useState(50);
+    const [speed, setSpeed] = useState(810 - props.speed);
 
     const [onButton, setOnButton] = useState(false);
+
+    let inProcess = props.inProcess;
+
+    const active = '#64c3ef'
+    const inactive = '#dbdbdb'
 
     function inSubmit() {
         setOnButton(true);
@@ -17,43 +22,65 @@ function Controls(props) {
     }
 
     function setSizeImpl(event) {
-        let temp = event.target.value;
-        setSize(temp);
-        props.update(temp);
+        if(!inProcess) {
+            let temp = event.target.value;
+            props.setIsSorted(false);
+            setSize(temp);
+            props.update(temp);
+        }
     }
 
     function setSpeedImpl(event) {
-        setSpeed(event.target.value);
+        if(!inProcess) {
+            let temp = event.target.value;
+            setSpeed(temp);
+            props.updateSpeed(810 - temp);
+        }
     }
 
     return (
         <div className='controls'>
             <button
                 style={{
-                    backgroundColor: onButton ? "#ff336a" : "black",
-                    color: onButton && "black",
+                    backgroundColor: inProcess ? "grey" : onButton ? "#ff336a" : "black",
+                    color: inProcess ? "black" : onButton && "black",
                     borderRadius: "30px",
                     fontSize: "2.4vh",
                     height: "70%",
+                    fontWeight:500,
                 }}
                 onMouseOver={inSubmit}
                 onMouseOut={outSubmit}
-                onClick={() => props.update(size)}
+                onClick={() => {
+                    if(!inProcess) {
+                        props.setIsSorted(false);
+                        props.update(size);
+                    }
+                }}
                 className="newArrayButton">
                 Create Random Array
             </button>
             <div>
-                <label className='labels' style = {{fontSize: "2.4vh",}}>Array Size</label>
+                <label className='labels' style = {{fontSize: "2.4vh",fontWeight:500,}}>Array Size</label>
                 <input
+                    style={{
+                        background: !inProcess ? `linear-gradient(90deg, ${active} 0% ${(100/96) * (size - 4)}%, ${inactive} ${(100/96) * (size - 4)}% 100%)` : "grey"
+                    }}
+                    className={"slider"}
                     onChange={setSizeImpl}
                     type="range" min="4" max="100" value={size}
                     id="myRange">
                 </input>
             </div>
             <div>
-                <label className='labels' style = {{fontSize: "2.4vh",}}>Speed</label>
-                <input onChange={setSpeedImpl}
-                       type="range" min="1" max="100" value={speed}
+                <label className='labels' style = {{fontSize: "2.4vh",fontWeight:500,}}>Speed</label>
+                <input
+                    style={{
+                        background:!inProcess ? `linear-gradient(90deg, ${active} 0% ${(10/79) * (speed - 10)}%, ${inactive} ${(10/79) * (speed - 10)}% 100%)` : "grey"
+                    }}
+                    onChange={setSpeedImpl}
+                       className={"slider"}
+                       type="range" min="10" max="800" value={speed}
                        id="myRange">
                 </input>
             </div>

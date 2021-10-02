@@ -1,3 +1,7 @@
+import Bar from './Bar';
+import BubbleBrain from '../brain/BubbleBrain';
+import InsertBrain from '../brain/InsertBrain';
+
 function AnimGround(props) {
 
     let arr = props.arr;
@@ -6,56 +10,49 @@ function AnimGround(props) {
 
     let size = arr.length;
 
-    let flag = false;
+    let translate = 1000 / size;
 
-    console.log("received");
+    let sizeFlag = false;
 
-    console.log(props.max);
+    let speed = props.speed;
 
-    console.log(arr);
+    let isSorted = props.isSorted;
 
-    if (size > 25) {
-        flag = true;
+    let {i, j, flag} = props.states;
+
+    let algoID = props.algoID;
+
+    if (size > 30) {
+        sizeFlag = true;
     }
 
+    function selectBrain(index, value, i, j, flag, algoID) {
+        switch (algoID) {
+            case 1:
+                return BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.BSI);
+            case 2:
+                return InsertBrain(index, value, i, j, flag, props.insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
+            default:
+                return <Bar
+                    Color="lightgreen"
+                    arr={arr}
+                    index={index}
+                    heightFactor={heightFactor}
+                    size={size}
+                    value={value}
+                    flag={sizeFlag}
+                />
+        }
+    }
 
     return (
         <div className="animContainer">
             <div className="anim align-content-center">
 
+                {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
                         return (
-
-                            <div
-                                key={index}
-                                className={"align-items-center"}
-                                style={
-                                    {
-                                        height: arr.at(index) * heightFactor + 100,
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignContent: "center",
-                                        marginTop: "10px",
-                                    }
-                                }>
-
-                                <div style={{
-                                    height: arr.at(index) * heightFactor + 50,
-                                    width: 1000 / size,
-                                    display: "flex",
-                                    justifyContent: "center",
-                                }}>
-                                    <div style={{
-                                        height: arr.at(index) * heightFactor + 50,
-                                        width: 6000 / (size * 7),
-                                        backgroundColor: "lightgreen"
-                                    }}>
-                                        {!flag && <div>
-                                            <p style={{marginBottom: "0"}}>{value}</p>
-                                        </div>}
-                                    </div>
-                                </div>
-                            </div>
+                            selectBrain(index, value, i, j, flag, algoID)
                         );
                     }
                 )

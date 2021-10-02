@@ -4,6 +4,8 @@ function AlgoButton(props){
 
     const [onButton, setOnButton] = useState(false);
 
+    const[clicked, setClicked] = useState(false);
+
     function inSubmit() {
         setOnButton(true);
     }
@@ -16,10 +18,18 @@ function AlgoButton(props){
         <button className={"algoButtons"}
                 onMouseOver={inSubmit}
                 onMouseOut={outSubmit}
+                onClick={() => {
+                    setClicked(false);
+                    props.setAlgoImpl(-1);
+                    setClicked(true);
+                    props.setAlgoImpl(props.id);
+                }}
                 style={
                     {
                         marginLeft: props.name === "Bubble Sort" ?   "auto" : "40px",
-                        backgroundColor : onButton ? "#ff336a" : "black",
+                        fontWeight:500,
+                        backgroundColor :
+                        clicked && (props.id === props.sa) ? "#3BBF7D" : (onButton ? "#ff336a" : "black"),
                         color : onButton && "black"
                     }
                 }>

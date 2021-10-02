@@ -1,12 +1,19 @@
-import {useState} from "react";
+import {toast} from 'react-toastify'; 
+import 'react-toastify/dist/ReactToastify.css'; 
+import BubbleSort from "../algorithms/BubbleSort";
+import InsertionSort from "../algorithms/InsertionSort";
 
-function Footer() {
+function Footer(props) {
 
     // const [onAboutButton, setAboutOnButton] = useState(false);
     //
     // const [onTeamButton, setTeamOnButton] = useState(false);
 
-    const[clicked, setClicked] = useState(false);
+    let isSorted = props.isSorted;
+
+    let inProcess = props.inProcess;
+
+    // const[clicked, setClicked] = useState(false);
 
     // function inAboutUs() {
     //     setAboutOnButton(true);
@@ -23,19 +30,39 @@ function Footer() {
     // function outTeam() {
     //     setTeamOnButton(false);
     // }
-
-    function setClickedImpl(){
-        setClicked(!clicked);
+    toast.configure();
+    async function setClickedImpl(){
+        if(!isSorted && !inProcess) {
+            // setClicked(isSorted);
+            props.setInProcess(true);
+            switch(props.algoID){
+                case 1:
+                    await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    break;
+                case 2:
+                    await InsertionSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    break;
+                default:
+                    toast("Select an Algorithm",{position:toast.POSITION.BOTTOM_RIGHT,autoClose:2000});
+                    props.setInProcess(false);
+            }
+            
+        }
     }
 
     return (
-        <div className={"row footer"} >
+        <div className={"footer"} >
 
             <div className={"col"} style={{textAlign: "center",height: "100%",display: "flex",justifyContent: "center", alignItems:"center"}}>
                 <button
                     className={"sortButton"}
                     onClick={setClickedImpl}
-                    style={{backgroundColor: clicked ? "grey" : "limegreen", borderRadius: "10px",fontSize: "2.4vh"}}
+                    style={{
+                        backgroundColor: inProcess || isSorted ? "grey" : "limegreen",
+                        borderRadius: "10px",
+                        fontSize: "2.4vh",
+                        fontWeight:500
+                    }}
                 >
                     Sort!
                 </button>
