@@ -37,6 +37,10 @@ function App() {
         }
     );
 
+    const [positionedIndexArr, setPositionedIndexArr] = useState([]);
+
+    const [pivotElement, setPivot] = useState(-1);
+
     function setAlgoImpl(i) {
         setAlgo(i);
     }
@@ -86,6 +90,18 @@ function App() {
         )
     }
 
+    function modifyArrQuick(array, x, y, pivot,flagg,positionedIndexArr) {
+        setArr([...array]);
+        setPivot(pivot);
+        setPositionedIndexArr(positionedIndexArr);
+        setStates({
+            i: x,
+            j: y,
+            flag: flagg,
+        });
+        // console.log(w);
+    }
+
     function selectAnimGround(algoID){
         switch(algoID){
             case 1:
@@ -107,6 +123,17 @@ function App() {
                 isSorted={isSorted}
                 algoID = {selectedAlgo}
                 insertionStates={insertStates}
+            />
+            case 3:
+                return <AnimGround
+                arr={arr}
+                max={max}
+                states={states}
+                speed={speed}
+                isSorted={isSorted}
+                algoID = {selectedAlgo}
+                positionedIndexArr = {positionedIndexArr}
+                pivot = {pivotElement}
             />
             default:
                 return <AnimGround
@@ -138,7 +165,7 @@ function App() {
             {selectAnimGround(selectedAlgo)}
             <Footer
                 arr={arr}
-                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : modifyArrBubble}
+                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : selectedAlgo===3 ? modifyArrQuick : modifyArrBubble}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}

@@ -1,6 +1,7 @@
 import Bar from './Bar';
 import BubbleBrain from '../brain/BubbleBrain';
 import InsertBrain from '../brain/InsertBrain';
+import QuickBrain from '../brain/QuickBrain';
 
 function AnimGround(props) {
 
@@ -32,6 +33,8 @@ function AnimGround(props) {
                 return BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.BSI);
             case 2:
                 return InsertBrain(index, value, i, j, flag, props.insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
+            case 3:
+                return QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.positionedIndexArr,props.pivot);
             default:
                 return <Bar
                     Color="lightgreen"
