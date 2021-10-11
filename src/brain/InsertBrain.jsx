@@ -3,7 +3,7 @@ import Bar from '../components/Bar';
 
 function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
     let {f1,f2,f3,insertSI} = insertionStates;
-    let color = isSorted ? "lightBlue" : index === i || index === j ? "#ff5e5e" : index<insertSI ? "yellow" :"lightGreen";
+    let color = isSorted ? "lightBlue" : index === i || index === j ? "#ff5e5e" : index<insertSI ? "#f9fb5a" :"lightGreen";
 
     if (f1 === 1 && f2 === 0 && f3 === 1) {
 

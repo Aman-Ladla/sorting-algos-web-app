@@ -12,7 +12,7 @@ function QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate
         }
         else {
             if (positionedIndexArr.includes(index)) {
-                color = "yellow";
+                color = "#f9fb5a";
             }
             else {
                 if (index === i || index === j) {
