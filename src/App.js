@@ -37,6 +37,19 @@ function App() {
         }
     );
 
+    const [mergeStates, setMergeStates] = useState(
+        {
+            low: -1,
+            mid: -1,
+            k : -1,
+            i : -1,
+            j : -1,
+            f1 : -1,
+            isPositioned : [],
+            isPositionedTx : [],
+        }
+    )
+
     const [positionedIndexArr, setPositionedIndexArr] = useState([]);
 
     const [pivotElement, setPivot] = useState(-1);
@@ -102,6 +115,38 @@ function App() {
         // console.log(w);
     }
 
+    function modifyArrMerge(array, low, mid, k, i, j, f1, f2, isPostiioned, isPositionedTx){
+        setArr([...array]);
+        setMergeStates(
+            {
+                low : low,
+                mid : mid,
+                k : k,
+                i : i,
+                j : j,
+                f1 : f1,
+                f2 : f2,
+                isPositioned : [...isPostiioned],
+                isPositionedTx : [...isPositionedTx],
+            }
+        )
+    }
+
+    function updateAlgoSelection(selectedAlgo){
+        switch(selectedAlgo){
+            case 1:
+                return modifyArrBubble;
+            case 2:
+                return modifyArrInsert;
+            case 3:
+                return modifyArrQuick;
+            case 5:
+                return modifyArrMerge;
+            default:
+                return modifyArrBubble;
+        }
+    }
+
     function selectAnimGround(algoID){
         switch(algoID){
             case 1:
@@ -135,6 +180,16 @@ function App() {
                 positionedIndexArr = {positionedIndexArr}
                 pivot = {pivotElement}
             />
+            case 5:
+                return <AnimGround
+                arr={arr}
+                max={max}
+                states={states}
+                speed={speed}
+                isSorted={isSorted}
+                algoID = {selectedAlgo}
+                mergeStates = {mergeStates}
+            />
             default:
                 return <AnimGround
                 arr={arr}
@@ -165,7 +220,8 @@ function App() {
             {selectAnimGround(selectedAlgo)}
             <Footer
                 arr={arr}
-                update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : selectedAlgo===3 ? modifyArrQuick : modifyArrBubble}
+                // update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : selectedAlgo===3 ? modifyArrQuick : modifyArrBubble}
+                update = {updateAlgoSelection(selectedAlgo)}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}
