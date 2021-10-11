@@ -1,8 +1,10 @@
 import Anime from 'react-anime';
 import Bar from '../components/Bar';
 
+let modColor = "00ff00";
+
 function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
-    let { low, mid, k, i, j, f1, f2, isPositioned, isPositionedTx } = mergeStates;
+    let { low, mid, k, i, j, f1, f2, isPositioned, isPositionedTx, colorEleArr, colorArr} = mergeStates;
 
     let color = isSorted ? "lightBlue" : "lightGreen";
 
@@ -11,7 +13,21 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
 
         if (isPositioned.includes(index)) {
             let temp = isPositionedTx[isPositioned.indexOf(index)];
-            color= "yellow";
+
+            color = "yellow";
+
+            // color= "#";
+            // let i=0;
+            // while(i !== 6-modColor.length){
+            //     color += "0";
+            //     i++;
+            // }
+
+            // color += modColor;
+            // console.log(color);
+            // let yourNumber = parseInt(modColor, 16);
+            // yourNumber = yourNumber + 20;
+            // modColor = yourNumber.toString(16);
             return (
                 <Anime duration={0} translateY={425} easing={"easeInOutQuad"}>
                     <Anime duration={0} translateX={translate * temp} easing={"easeInOutQuad"}>
@@ -31,6 +47,16 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             )
         }
         else {
+            color="lightGreen";
+            if(colorEleArr.some(row => row.includes(index))){
+                // color = "purple";
+                for(let i=0;i<colorEleArr.length;i++){
+                    if(colorEleArr[i].includes(index)){
+                        color = colorArr[i];
+                        break;
+                    }
+                }
+            }
             return (
                 <Bar
                     Color={color}
@@ -86,6 +112,17 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
                 )
             }
             else {
+
+                if(colorEleArr.some(row => row.includes(index))){
+                    // color = "purple";
+                    for(let i=0;i<colorEleArr.length;i++){
+                        if(colorEleArr[i].includes(index)){
+                            color = colorArr[i];
+                            break;
+                        }
+                    }
+                }
+
                 return (
                     <Bar
                         Color={color}
@@ -139,6 +176,15 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
                 )
             }
             else {
+                if(colorEleArr.some(row => row.includes(index))){
+                    // color = "purple";
+                    for(let i=0;i<colorEleArr.length;i++){
+                        if(colorEleArr[i].includes(index)){
+                            color = colorArr[i];
+                            break;
+                        }
+                    }
+                }
                 return (
                     <Bar
                         Color={color}
@@ -153,6 +199,25 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             }
         }
         else {
+
+            if(isSorted){
+                color = "lightBlue";
+            }
+            else if(colorEleArr.some(row => row.includes(index))){
+
+                for(let i=0;i<colorEleArr.length;i++){
+                    if(colorEleArr[i].includes(index)){
+                        color = colorArr[i];
+                        break;
+                    }
+                }
+
+                // console.log(color);
+
+
+                // color = "purple";
+            }
+            // color = isSorted && "lightBlue";
             return (
                 <Bar
                     Color={color}

@@ -47,6 +47,8 @@ function App() {
             f1 : -1,
             isPositioned : [],
             isPositionedTx : [],
+            colorEleArr : [],
+            colorArr : [],
         }
     )
 
@@ -115,7 +117,7 @@ function App() {
         // console.log(w);
     }
 
-    function modifyArrMerge(array, low, mid, k, i, j, f1, f2, isPostiioned, isPositionedTx){
+    function modifyArrMerge(array, low, mid, k, i, j, f1, f2, isPostiioned, isPositionedTx, colorEleArr, colorArr){
         setArr([...array]);
         setMergeStates(
             {
@@ -128,6 +130,8 @@ function App() {
                 f2 : f2,
                 isPositioned : [...isPostiioned],
                 isPositionedTx : [...isPositionedTx],
+                colorEleArr : [...colorEleArr],
+                colorArr : [...colorArr],
             }
         )
     }
@@ -228,6 +232,8 @@ function App() {
                 isSorted={isSorted}
                 setIsSorted={setIsSortedImpl}
                 algoID = {selectedAlgo}
+                colorEleArr = {mergeStates.colorEleArr}
+                colorArr = {mergeStates.colorArr}
             />
         </div>
     );
