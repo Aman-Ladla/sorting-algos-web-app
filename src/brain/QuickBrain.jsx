@@ -1,23 +1,34 @@
 import Anime from 'react-anime';
 import Bar from '../components/Bar';
-function QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, positionedIndexArr, pivot) {
+function QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, positionedIndexArr, pivot, limits) {
+    let { low, high } = limits;
     let color;
 
     if (isSorted) {
         color = "lightBlue";
     } else {
-        if(index===pivot){
+        if (index === pivot) {
             color = "red";
         }
-        else{
-            if(positionedIndexArr.includes(index)){
+        else {
+            if (positionedIndexArr.includes(index)) {
                 color = "yellow";
             }
-            else{
+            else {
                 if (index === i || index === j) {
                     color = "#ff5e5e";
                 } else {
-                    color = "lightgreen";
+                    if (index >= low && index < high) {
+                        if (arr[index] <= arr[pivot]) {
+                            color = "#dda0dd";
+                        }
+                        else {
+                            color = "#ba55d3";
+                        }
+                    }
+                    else {
+                        color = "lightgreen";
+                    }
                 }
             }
         }
