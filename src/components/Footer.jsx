@@ -48,7 +48,7 @@ function Footer(props) {
                     await QuickSort(props.arr, 0, props.arr.length-1,props.update,props.speed, props.setIsSorted, props.setInProcess);
                     break;
                 case 5:
-                    await MergeSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    await MergeSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.colorEleArr, props.colorArr);
                     break;
                 default:
                     toast("Select an Algorithm",{position:toast.POSITION.BOTTOM_RIGHT,autoClose:2000});
