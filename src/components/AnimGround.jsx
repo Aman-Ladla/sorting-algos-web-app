@@ -2,6 +2,7 @@ import Bar from './Bar';
 import BubbleBrain from '../brain/BubbleBrain';
 import InsertBrain from '../brain/InsertBrain';
 import QuickBrain from '../brain/QuickBrain';
+import MergeBrain from '../brain/MergeBrain';
 
 function AnimGround(props) {
 
@@ -14,6 +15,10 @@ function AnimGround(props) {
     let translate = 1000 / size;
 
     let sizeFlag = false;
+
+    // if(Object.values(props).includes("states")){
+    //     let {i, j, flag} = props.states;
+    // }
 
     let speed = props.speed;
 
@@ -35,6 +40,8 @@ function AnimGround(props) {
                 return InsertBrain(index, value, i, j, flag, props.insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             case 3:
                 return QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.positionedIndexArr,props.pivot);
+            case 5:
+                return MergeBrain(index, value, props.mergeStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             default:
                 return <Bar
                     Color="lightgreen"

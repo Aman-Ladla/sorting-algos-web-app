@@ -2,6 +2,7 @@ import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import BubbleSort from "../algorithms/BubbleSort";
 import InsertionSort from "../algorithms/InsertionSort";
+import MergeSort from '../algorithms/MergeSort';
 import QuickSort from '../algorithms/QuickSort';
 
 function Footer(props) {
@@ -45,6 +46,9 @@ function Footer(props) {
                     break;
                 case 3:
                     await QuickSort(props.arr, 0, props.arr.length-1,props.update,props.speed, props.setIsSorted, props.setInProcess);
+                    break;
+                case 5:
+                    await MergeSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
                     break;
                 default:
                     toast("Select an Algorithm",{position:toast.POSITION.BOTTOM_RIGHT,autoClose:2000});
