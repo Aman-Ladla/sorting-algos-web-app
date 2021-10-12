@@ -14,7 +14,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
         if (isPositioned.includes(index)) {
             let temp = isPositionedTx[isPositioned.indexOf(index)];
 
-            color = "yellow";
+            color = "#f9fb5a";
 
             // color= "#";
             // let i=0;
@@ -93,7 +93,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             }
             else if (isPositioned.includes(index)) {
                 let temp = isPositionedTx[isPositioned.indexOf(index)];
-                color= "yellow";
+                color= "#f9fb5a";
                 return (
 
                     <Anime duration={0} translateY={425} easing={"easeInOutQuad"}>
@@ -158,7 +158,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             }
             else if (isPositioned.includes(index)) {
                 let temp = isPositionedTx[isPositioned.indexOf(index)];
-                color = "yellow";
+                color = "#f9fb5a";
                 return (
                     <Anime duration={0} translateY={425} easing={"easeInOutQuad"}>
                         <Anime duration={0} translateX={translate * temp} easing={"easeInOutQuad"}>

@@ -56,6 +56,13 @@ function App() {
 
     const [pivotElement, setPivot] = useState(-1);
 
+    const [partitionLimits, setLimits] = useState(
+        {
+            low: -1,
+            high: -1
+        }
+    );
+
     function setAlgoImpl(i) {
         setAlgo(i);
     }
@@ -105,10 +112,14 @@ function App() {
         )
     }
 
-    function modifyArrQuick(array, x, y, pivot,flagg,positionedIndexArr) {
+    function modifyArrQuick(array, x, y, pivot,flagg,positionedIndexArr, low, high) {
         setArr([...array]);
         setPivot(pivot);
         setPositionedIndexArr(positionedIndexArr);
+        setLimits({
+            low: low,
+            high: high
+        });
         setStates({
             i: x,
             j: y,
@@ -183,6 +194,7 @@ function App() {
                 algoID = {selectedAlgo}
                 positionedIndexArr = {positionedIndexArr}
                 pivot = {pivotElement}
+                limits = {partitionLimits}
             />
             case 5:
                 return <AnimGround
