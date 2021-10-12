@@ -15,6 +15,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             let temp = isPositionedTx[isPositioned.indexOf(index)];
 
             color = "#f9fb5a";
+            let factor = 0.3 - (((100 - value) * 0.2)/100);
 
             // color= "#";
             // let i=0;
@@ -29,9 +30,9 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             // yourNumber = yourNumber + 20;
             // modColor = yourNumber.toString(16);
             return (
-                <Anime duration={0} translateY={425} easing={"easeInOutQuad"}>
+                <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Anime duration={0} translateX={translate * temp} easing={"easeInOutQuad"}>
-                        <Anime duration={speed - 10} translateY={-425} easing={"easeInOutQuad"}>
+                        <Anime duration={speed - 10} scaleY={2} translateY={-(360 - (425 * factor))} easing={"easeInOutQuad"}>
                             <Bar
                                 Color={color}
                                 arr={arr}
@@ -76,7 +77,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             if (index === low + i) {
                 color = "#ff5e5e";
                 return (
-                    <Anime duration={speed - 10} translateY={425} easing={"easeInOutQuad"}>
+                    <Anime duration={speed - 10} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                         <Anime duration={speed - 10} translateX={translate * (k - i)} easing={"easeInOutQuad"}>
                             <Bar
                                 Color={color}
@@ -96,7 +97,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
                 color= "#f9fb5a";
                 return (
 
-                    <Anime duration={0} translateY={425} easing={"easeInOutQuad"}>
+                    <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                         <Anime duration={0} translateX={translate * temp} easing={"easeInOutQuad"}>
                             <Bar
                                 Color={color}
@@ -141,7 +142,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             if (index === mid + j + 1) {
                 color = "#ff5e5e";
                 return (
-                    <Anime duration={speed - 10} translateY={425} easing={"easeInOutQuad"}>
+                    <Anime duration={speed - 10} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                         <Anime duration={speed - 10} translateX={translate * ((low + k) - (mid + j + 1))} easing={"easeInOutQuad"}>
                             <Bar
                                 Color={color}
@@ -160,7 +161,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
                 let temp = isPositionedTx[isPositioned.indexOf(index)];
                 color = "#f9fb5a";
                 return (
-                    <Anime duration={0} translateY={425} easing={"easeInOutQuad"}>
+                    <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                         <Anime duration={0} translateX={translate * temp} easing={"easeInOutQuad"}>
                             <Bar
                                 Color={color}
