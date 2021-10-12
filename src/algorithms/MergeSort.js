@@ -10,6 +10,8 @@
  * 8th -> 0 Down translate / 1 Up translate
  * 9th -> index already sorted in current session
  * 10th -> translation of element from its initial position
+ * 11th -> Elements that have been partially sorted with given color
+ * 12th -> Colors of individual elements
  */
 
 
@@ -139,19 +141,28 @@ async function MergeSort(arr, update, speed, setIsSorted, setInProgress, colorEl
         // }
     colorEleArr.push(isPositioned);
 
-    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    // let randomColor = Math.floor(Math.random()*16777215).toString(16);
 
     let color = "";
 
-    let i1=0;
-    while(i1 !== 6-randomColor.length){
-        color += "0";
-        i1++;
+    function getRandomColor() {
+        var letters = '45789ABCD'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * letters.length)];
+        }
+        return color;
     }
 
-    color += randomColor;
+    // let i1=0;
+    // while(i1 !== 6-randomColor.length){
+    //     color += "0";
+    //     i1++;
+    // }
 
-    colorArr.push("#" + color);
+    // color += randomColor;
+
+    colorArr.push(getRandomColor());
 
     // console.log("colorEleArr " + colorEleArr.toString);
     // console.log("ispositioned" + isPositioned);
