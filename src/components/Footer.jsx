@@ -4,6 +4,7 @@ import BubbleSort from "../algorithms/BubbleSort";
 import InsertionSort from "../algorithms/InsertionSort";
 import MergeSort from '../algorithms/MergeSort';
 import QuickSort from '../algorithms/QuickSort';
+import HeapSort from '../algorithms/HeapSort';
 
 function Footer(props) {
 
@@ -46,6 +47,9 @@ function Footer(props) {
                     break;
                 case 3:
                     await QuickSort(props.arr, 0, props.arr.length-1,props.update,props.speed, props.setIsSorted, props.setInProcess);
+                    break;
+                case 4:
+                    await HeapSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
                     break;
                 case 5:
                     await MergeSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.colorEleArr, props.colorArr);

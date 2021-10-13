@@ -63,6 +63,14 @@ function App() {
         }
     );
 
+    const [heapStates, setHeapStates] = useState(
+        {
+            i: -1,
+            j: -1,
+            flag: false,
+        }
+    );
+
     function setAlgoImpl(i) {
         setAlgo(i);
     }
@@ -147,6 +155,15 @@ function App() {
         )
     }
 
+    function modifyArrHeap(array,i,j,flagg){
+        setArr([...array]);
+        setHeapStates({
+            i: i,
+            j: j,
+            flag: flagg
+        });
+    }
+
     function updateAlgoSelection(selectedAlgo){
         switch(selectedAlgo){
             case 1:
@@ -155,6 +172,8 @@ function App() {
                 return modifyArrInsert;
             case 3:
                 return modifyArrQuick;
+            case 4:
+                return modifyArrHeap;
             case 5:
                 return modifyArrMerge;
             default:
@@ -195,6 +214,15 @@ function App() {
                 positionedIndexArr = {positionedIndexArr}
                 pivot = {pivotElement}
                 limits = {partitionLimits}
+            />
+            case 4:
+                return <AnimGround
+                arr={arr}
+                max={max}
+                states={heapStates}
+                speed={speed}
+                isSorted={isSorted}
+                algoID = {selectedAlgo}
             />
             case 5:
                 return <AnimGround

@@ -1,3 +1,15 @@
+/**
+ * Update Params:
+ * 1st -> Array
+ * 2nd -> index of first value greater than pivot
+ * 3rd -> index of current element being compared
+ * 4th -> index of pivot element
+ * 5th -> boolean for swap (true - swap, false - not swap)
+ * 6th -> array containing indices of elements on the correct position
+ * 7th -> low
+ * 8th -> index of current element (till where the purple color should appear)
+ */
+
 let positionedIndexArr = [];
 
 async function QuickSort(arr, low, high, update, speed, setIsSorted, setInProgress){
