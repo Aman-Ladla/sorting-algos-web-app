@@ -1,15 +1,25 @@
 import Anime from 'react-anime';
 import Bar from '../components/Bar';
-function HeapBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
+function HeapBrain(index, value, heapStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
     let color;
-
+    let { i, j, sortedIndex, flag, heapify } = heapStates;
     if (isSorted) {
         color = "lightBlue";
     } else {
-        if (index === i || index === j) {
-            color = "#ff5e5e"
-        } else {
-            color = "lightgreen";
+        if (sortedIndex.includes(index)) {
+            color = "#f9fb5a";
+        }
+        else {
+            if (index === i || index === j) {
+                if (heapify) {
+                    color = "#dda0dd"
+                }
+                else {
+                    color = "#ff5e5e"
+                }
+            } else {
+                color = "lightgreen";
+            }
         }
     }
 

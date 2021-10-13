@@ -25,7 +25,7 @@ function AnimGround(props) {
 
     let isSorted = props.isSorted;
 
-    let {i, j, flag} = props.states;
+    let { i, j, flag } = props.states;
 
     let algoID = props.algoID;
 
@@ -40,9 +40,9 @@ function AnimGround(props) {
             case 2:
                 return InsertBrain(index, value, i, j, flag, props.insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             case 3:
-                return QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.positionedIndexArr,props.pivot, props.limits);
+                return QuickBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted, props.positionedIndexArr, props.pivot, props.limits);
             case 4:
-                return HeapBrain(index, value, i, j, flag, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
+                return HeapBrain(index, value, props.states, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             case 5:
                 return MergeBrain(index, value, props.mergeStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             default:
@@ -64,10 +64,10 @@ function AnimGround(props) {
 
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
                 {arr.map((value, index) => {
-                        return (
-                            selectBrain(index, value, i, j, flag, algoID)
-                        );
-                    }
+                    return (
+                        selectBrain(index, value, i, j, flag, algoID)
+                    );
+                }
                 )
                 }
 

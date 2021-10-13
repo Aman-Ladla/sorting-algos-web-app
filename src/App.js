@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Controls from "./components/Controls";
 import AnimGround from "./components/AnimGround";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useState} from "react";
+import { useState } from "react";
 import createArray from "./CreatingArr";
 
 function App() {
@@ -41,14 +41,14 @@ function App() {
         {
             low: -1,
             mid: -1,
-            k : -1,
-            i : -1,
-            j : -1,
-            f1 : -1,
-            isPositioned : [],
-            isPositionedTx : [],
-            colorEleArr : [],
-            colorArr : [],
+            k: -1,
+            i: -1,
+            j: -1,
+            f1: -1,
+            isPositioned: [],
+            isPositionedTx: [],
+            colorEleArr: [],
+            colorArr: [],
         }
     )
 
@@ -67,7 +67,9 @@ function App() {
         {
             i: -1,
             j: -1,
+            sortedIndex: [],
             flag: false,
+            heapify: false
         }
     );
 
@@ -103,7 +105,7 @@ function App() {
         // console.log(w);
     }
 
-    function modifyArrInsert(array, x, y, f1, f2, f3, insertSI,flagg){
+    function modifyArrInsert(array, x, y, f1, f2, f3, insertSI, flagg) {
         setArr([...array]);
         setStates({
             i: x,
@@ -120,7 +122,7 @@ function App() {
         )
     }
 
-    function modifyArrQuick(array, x, y, pivot,flagg,positionedIndexArr, low, high) {
+    function modifyArrQuick(array, x, y, pivot, flagg, positionedIndexArr, low, high) {
         setArr([...array]);
         setPivot(pivot);
         setPositionedIndexArr(positionedIndexArr);
@@ -136,36 +138,38 @@ function App() {
         // console.log(w);
     }
 
-    function modifyArrMerge(array, low, mid, k, i, j, f1, f2, isPostiioned, isPositionedTx, colorEleArr, colorArr){
+    function modifyArrMerge(array, low, mid, k, i, j, f1, f2, isPostiioned, isPositionedTx, colorEleArr, colorArr) {
         setArr([...array]);
         setMergeStates(
             {
-                low : low,
-                mid : mid,
-                k : k,
-                i : i,
-                j : j,
-                f1 : f1,
-                f2 : f2,
-                isPositioned : [...isPostiioned],
-                isPositionedTx : [...isPositionedTx],
-                colorEleArr : [...colorEleArr],
-                colorArr : [...colorArr],
+                low: low,
+                mid: mid,
+                k: k,
+                i: i,
+                j: j,
+                f1: f1,
+                f2: f2,
+                isPositioned: [...isPostiioned],
+                isPositionedTx: [...isPositionedTx],
+                colorEleArr: [...colorEleArr],
+                colorArr: [...colorArr],
             }
         )
     }
 
-    function modifyArrHeap(array,i,j,flagg){
+    function modifyArrHeap(array, i, j, sortedIndex, flagg, heapify) {
         setArr([...array]);
         setHeapStates({
             i: i,
             j: j,
-            flag: flagg
+            sortedIndex: sortedIndex,
+            flag: flagg,
+            heapify: heapify,
         });
     }
 
-    function updateAlgoSelection(selectedAlgo){
-        switch(selectedAlgo){
+    function updateAlgoSelection(selectedAlgo) {
+        switch (selectedAlgo) {
             case 1:
                 return modifyArrBubble;
             case 2:
@@ -181,68 +185,68 @@ function App() {
         }
     }
 
-    function selectAnimGround(algoID){
-        switch(algoID){
+    function selectAnimGround(algoID) {
+        switch (algoID) {
             case 1:
                 return <AnimGround
-                arr={arr}
-                max={max}
-                states={states}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-                BSI={bubbleSortedIndex}
-            />
+                    arr={arr}
+                    max={max}
+                    states={states}
+                    speed={speed}
+                    isSorted={isSorted}
+                    algoID={selectedAlgo}
+                    BSI={bubbleSortedIndex}
+                />
             case 2:
                 return <AnimGround
-                arr={arr}
-                max={max}
-                states={states}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-                insertionStates={insertStates}
-            />
+                    arr={arr}
+                    max={max}
+                    states={states}
+                    speed={speed}
+                    isSorted={isSorted}
+                    algoID={selectedAlgo}
+                    insertionStates={insertStates}
+                />
             case 3:
                 return <AnimGround
-                arr={arr}
-                max={max}
-                states={states}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-                positionedIndexArr = {positionedIndexArr}
-                pivot = {pivotElement}
-                limits = {partitionLimits}
-            />
+                    arr={arr}
+                    max={max}
+                    states={states}
+                    speed={speed}
+                    isSorted={isSorted}
+                    algoID={selectedAlgo}
+                    positionedIndexArr={positionedIndexArr}
+                    pivot={pivotElement}
+                    limits={partitionLimits}
+                />
             case 4:
                 return <AnimGround
-                arr={arr}
-                max={max}
-                states={heapStates}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-            />
+                    arr={arr}
+                    max={max}
+                    states={heapStates}
+                    speed={speed}
+                    isSorted={isSorted}
+                    algoID={selectedAlgo}
+                />
             case 5:
                 return <AnimGround
-                arr={arr}
-                max={max}
-                states={states}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-                mergeStates = {mergeStates}
-            />
+                    arr={arr}
+                    max={max}
+                    states={states}
+                    speed={speed}
+                    isSorted={isSorted}
+                    algoID={selectedAlgo}
+                    mergeStates={mergeStates}
+                />
             default:
                 return <AnimGround
-                arr={arr}
-                max={max}
-                states={states}
-                speed={speed}
-                isSorted={isSorted}
-                algoID = {selectedAlgo}
-            />
+                    arr={arr}
+                    max={max}
+                    states={states}
+                    speed={speed}
+                    isSorted={isSorted}
+                    algoID={selectedAlgo}
+                />
 
         }
     }
@@ -252,7 +256,7 @@ function App() {
     return (
         <div className="App">
             <Header
-                algoID={setAlgoImpl}/>
+                algoID={setAlgoImpl} />
             <Controls
                 update={updateArr}
                 speed={speed}
@@ -265,15 +269,15 @@ function App() {
             <Footer
                 arr={arr}
                 // update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : selectedAlgo===3 ? modifyArrQuick : modifyArrBubble}
-                update = {updateAlgoSelection(selectedAlgo)}
+                update={updateAlgoSelection(selectedAlgo)}
                 speed={speed}
                 inProcess={inProcess}
                 setInProcess={setInProcessImpl}
                 isSorted={isSorted}
                 setIsSorted={setIsSortedImpl}
-                algoID = {selectedAlgo}
-                colorEleArr = {mergeStates.colorEleArr}
-                colorArr = {mergeStates.colorArr}
+                algoID={selectedAlgo}
+                colorEleArr={mergeStates.colorEleArr}
+                colorArr={mergeStates.colorArr}
             />
         </div>
     );
