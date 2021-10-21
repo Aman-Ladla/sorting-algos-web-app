@@ -40,19 +40,19 @@ function Footer(props) {
             props.setInProcess(true);
             switch (props.algoID) {
                 case 1:
-                    await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    await BubbleSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.setTime);
                     break;
                 case 2:
-                    await InsertionSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    await InsertionSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.setTime);
                     break;
                 case 3:
-                    await QuickSort(props.arr, 0, props.arr.length - 1, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    await QuickSort(props.arr, 0, props.arr.length - 1, props.update, props.speed, props.setIsSorted, props.setInProcess, props.setTime);
                     break;
                 case 4:
-                    await HeapSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess);
+                    await HeapSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.setTime);
                     break;
                 case 5:
-                    await MergeSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.colorEleArr, props.colorArr);
+                    await MergeSort(props.arr, props.update, props.speed, props.setIsSorted, props.setInProcess, props.colorEleArr, props.colorArr, props.setTime);
                     break;
                 default:
                     toast("Select an Algorithm", { position: toast.POSITION.BOTTOM_RIGHT, autoClose: 2000 });

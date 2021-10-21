@@ -24,6 +24,8 @@ function App() {
 
     const [isSorted, setIsSorted] = useState(false);
 
+    const [time, setTime] = useState(0);
+
     const [selectedAlgo, setAlgo] = useState(-1);
 
     const [bubbleSortedIndex, setBSI] = useState(-1);
@@ -79,6 +81,10 @@ function App() {
 
     function setIsSortedImpl(flag) {
         setIsSorted(flag);
+    }
+
+    function setTimeImpl(time) {
+        setTime(time);
     }
 
     function setInProcessImpl(flag) {
@@ -194,6 +200,7 @@ function App() {
                     states={states}
                     speed={speed}
                     isSorted={isSorted}
+                    time={time}
                     algoID={selectedAlgo}
                     BSI={bubbleSortedIndex}
                 />
@@ -204,6 +211,7 @@ function App() {
                     states={states}
                     speed={speed}
                     isSorted={isSorted}
+                    time={time}
                     algoID={selectedAlgo}
                     insertionStates={insertStates}
                 />
@@ -214,6 +222,7 @@ function App() {
                     states={states}
                     speed={speed}
                     isSorted={isSorted}
+                    time={time}
                     algoID={selectedAlgo}
                     positionedIndexArr={positionedIndexArr}
                     pivot={pivotElement}
@@ -226,6 +235,7 @@ function App() {
                     states={heapStates}
                     speed={speed}
                     isSorted={isSorted}
+                    time={time}
                     algoID={selectedAlgo}
                 />
             case 5:
@@ -235,6 +245,7 @@ function App() {
                     states={states}
                     speed={speed}
                     isSorted={isSorted}
+                    time={time}
                     algoID={selectedAlgo}
                     mergeStates={mergeStates}
                 />
@@ -245,6 +256,7 @@ function App() {
                     states={states}
                     speed={speed}
                     isSorted={isSorted}
+                    time={time}
                     algoID={selectedAlgo}
                 />
 
@@ -275,6 +287,7 @@ function App() {
                 setInProcess={setInProcessImpl}
                 isSorted={isSorted}
                 setIsSorted={setIsSortedImpl}
+                setTime={setTimeImpl}
                 algoID={selectedAlgo}
                 colorEleArr={mergeStates.colorEleArr}
                 colorArr={mergeStates.colorArr}

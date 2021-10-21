@@ -12,51 +12,103 @@
 
 let positionedIndexArr = [];
 
-async function QuickSort(arr, low, high, update, speed, setIsSorted, setInProgress){
+async function QuickSort(arr, low, high, update, speed, setIsSorted, setInProgress, setTime) {
+
+    async function partition1(arr, low, high) {
+
+        let pivot = arr[high];
+
+        let i = low - 1;
+
+        for (let j = low; j <= high; j++) {
+
+            if (arr[j] < pivot) {
+                i++;
+                let temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+
+        }
+
+        let temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
+    }
+
+    async function quick(arr, low, high) {
+
+        if (low < high) {
+
+            let part = await partition1(arr, low, high);
+
+            await quick(arr, low, part - 1);
+            await quick(arr, part + 1, high);
+
+        }
+
+    }
+
+    let temp = [...arr];
+
+    // let st = new Date().getMilliseconds();
+    let st = performance.now();
+    console.time('time');
+    await quick(temp);
+    let et = performance.now();
+    // let et = new Date().getMilliseconds();
+
+    console.timeEnd('time');
+
+
+
     await QuickSortImpl(arr, low, high, update, speed);
     positionedIndexArr = [];
-    update(arr,-1,-1,-1,false,positionedIndexArr,-1,-1);
+    update(arr, -1, -1, -1, false, positionedIndexArr, -1, -1);
+    setTime((et - st).toFixed(2));
     setIsSorted(true);
     setInProgress(false);
 }
 
-async function QuickSortImpl(arr, low, high, update, speed){
-    if(low < high){
+async function QuickSortImpl(arr, low, high, update, speed) {
+    if (low < high) {
         let index = await partition(arr, low, high, update, speed);
-        await QuickSortImpl(arr, low, index-1, update, speed);
+        await QuickSortImpl(arr, low, index - 1, update, speed);
         positionedIndexArr.push(low);
-        await QuickSortImpl(arr, index+1, high, update, speed);
-        positionedIndexArr.push(index+1);
+        await QuickSortImpl(arr, index + 1, high, update, speed);
+        positionedIndexArr.push(index + 1);
     }
 }
 
-async function partition(arr, low, high, update, speed){
+async function partition(arr, low, high, update, speed) {
     let pivot = arr[high];    //element that goes to desired position
-    let i = low-1;
-    update(arr, -1, -1, high ,false, positionedIndexArr,low,high);
-    for(let j = low; j <= high-1; j++){
-        if(arr[j] <= pivot){
+    let i = low - 1;
+    update(arr, -1, -1, high, false, positionedIndexArr, low, high);
+    for (let j = low; j <= high - 1; j++) {
+        if (arr[j] <= pivot) {
             i++;
-            update(arr, i, j, high, true, positionedIndexArr,low,j);
+            update(arr, i, j, high, true, positionedIndexArr, low, j);
             await new Promise(done => setTimeout(() => done(), speed));
             let temp = arr[i];
             arr[i] = arr[j];
-            arr[j] = temp;   
-            update(arr, i, j, high, false, positionedIndexArr,low,high);
+            arr[j] = temp;
+            update(arr, i, j, high, false, positionedIndexArr, low, high);
         }
-        else{
-            update(arr, i+1, j, high, false, positionedIndexArr,low,j);
+        else {
+            update(arr, i + 1, j, high, false, positionedIndexArr, low, j);
             await new Promise(done => setTimeout(() => done(), speed));
         }
     }
-    update(arr, i+1, high, high, true,positionedIndexArr,low,high);
-    positionedIndexArr.push(i+1);
+    update(arr, i + 1, high, high, true, positionedIndexArr, low, high);
+    positionedIndexArr.push(i + 1);
     await new Promise(done => setTimeout(() => done(), speed));
-    let temp = arr[i+1];
-    arr[i+1] = arr[high];
+    let temp = arr[i + 1];
+    arr[i + 1] = arr[high];
     arr[high] = temp;
-    update(arr, i+1, high, i+1, false, positionedIndexArr,low,high);
-    return i+1;
+    update(arr, i + 1, high, i + 1, false, positionedIndexArr, low, high);
+    return i + 1;
 }
 
 export default QuickSort;

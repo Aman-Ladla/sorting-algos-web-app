@@ -60,16 +60,21 @@ function AnimGround(props) {
 
     return (
         <div className="animContainer">
-            <div className="anim align-content-center">
+            <div className="anim">
 
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
-                {arr.map((value, index) => {
-                    return (
-                        selectBrain(index, value, i, j, flag, algoID)
-                    );
-                }
-                )
-                }
+
+                <div className={"anim"} style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                    {arr.map((value, index) => {
+                        return (
+                            selectBrain(index, value, i, j, flag, algoID)
+                        );
+                    }
+                    )
+                    }
+                </div>
+
+                {isSorted && <p align={"end"} style={{ paddingRight: "10px" }}>Real time for execution : {props.time}ms</p>}
 
             </div>
         </div>

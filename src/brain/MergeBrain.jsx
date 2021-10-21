@@ -4,7 +4,7 @@ import Bar from '../components/Bar';
 let modColor = "00ff00";
 
 function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
-    let { low, mid, k, i, j, f1, f2, isPositioned, isPositionedTx, colorEleArr, colorArr} = mergeStates;
+    let { low, mid, k, i, j, f1, f2, isPositioned, isPositionedTx, colorEleArr, colorArr } = mergeStates;
 
     let color = isSorted ? "lightBlue" : "lightGreen";
 
@@ -15,7 +15,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             let temp = isPositionedTx[isPositioned.indexOf(index)];
 
             color = "#f9fb5a";
-            let factor = 0.3 - (((100 - value) * 0.2)/100);
+            let factor = 0.3 - (((100 - value) * 0.2) / 100);
 
             // color= "#";
             // let i=0;
@@ -48,11 +48,11 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             )
         }
         else {
-            color="lightGreen";
-            if(colorEleArr.some(row => row.includes(index))){
+            color = "lightGreen";
+            if (colorEleArr.some(row => row.includes(index))) {
                 // color = "purple";
-                for(let i=0;i<colorEleArr.length;i++){
-                    if(colorEleArr[i].includes(index)){
+                for (let i = 0; i < colorEleArr.length; i++) {
+                    if (colorEleArr[i].includes(index)) {
                         color = colorArr[i];
                         break;
                     }
@@ -94,7 +94,7 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             }
             else if (isPositioned.includes(index)) {
                 let temp = isPositionedTx[isPositioned.indexOf(index)];
-                color= "#f9fb5a";
+                color = "#f9fb5a";
                 return (
 
                     <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
@@ -114,10 +114,10 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
             }
             else {
 
-                if(colorEleArr.some(row => row.includes(index))){
+                if (colorEleArr.some(row => row.includes(index))) {
                     // color = "purple";
-                    for(let i=0;i<colorEleArr.length;i++){
-                        if(colorEleArr[i].includes(index)){
+                    for (let i = 0; i < colorEleArr.length; i++) {
+                        if (colorEleArr[i].includes(index)) {
                             color = colorArr[i];
                             break;
                         }
@@ -177,10 +177,10 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
                 )
             }
             else {
-                if(colorEleArr.some(row => row.includes(index))){
+                if (colorEleArr.some(row => row.includes(index))) {
                     // color = "purple";
-                    for(let i=0;i<colorEleArr.length;i++){
-                        if(colorEleArr[i].includes(index)){
+                    for (let i = 0; i < colorEleArr.length; i++) {
+                        if (colorEleArr[i].includes(index)) {
                             color = colorArr[i];
                             break;
                         }
@@ -201,13 +201,13 @@ function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translat
         }
         else {
 
-            if(isSorted){
+            if (isSorted) {
                 color = "lightBlue";
             }
-            else if(colorEleArr.some(row => row.includes(index))){
+            else if (colorEleArr.some(row => row.includes(index))) {
 
-                for(let i=0;i<colorEleArr.length;i++){
-                    if(colorEleArr[i].includes(index)){
+                for (let i = 0; i < colorEleArr.length; i++) {
+                    if (colorEleArr[i].includes(index)) {
                         color = colorArr[i];
                         break;
                     }

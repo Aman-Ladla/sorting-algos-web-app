@@ -1,6 +1,64 @@
 let sortedIndex = [];
 
-async function HeapSort(arr, update, speed, setIsSorted, setInProgress) {
+async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime) {
+
+    async function heapify(arr, i, n) {
+
+        let largest = i;
+
+        let l = 2 * i + 1;
+        let r = 2 * i + 2;
+
+        if (l < n && arr[l] > arr[largest]) {
+            largest = l;
+        }
+
+        if (r < n && arr[r] > arr[largest]) {
+            largest = r;
+        }
+
+        if (largest !== i) {
+            let temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+            await heapify(arr, largest, n);
+        }
+
+    }
+
+    async function heapSort(arr) {
+
+        let n = arr.length;
+
+        for (let j = n / 2 - 1; j >= 0; j--) {
+            await heapify(arr, j, n);
+        }
+
+        for (let i = n - 1; i > 0; i--) {
+
+            let temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            await heapify(arr, 0, i);
+        }
+
+    }
+
+    let temp = [...arr];
+
+    // let st = new Date().getMilliseconds();
+    let st = performance.now();
+    console.time('time');
+    await heapSort(temp);
+    let et = performance.now();
+    // let et = new Date().getMilliseconds();
+
+    console.timeEnd('time');
+
+
+
+
     let size = arr.length;
 
     for (let i = Math.floor(size / 2) - 1; i >= 0; i--) {
@@ -19,6 +77,7 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress) {
     console.log(arr);
     sortedIndex = [];
     update(arr, -1, -1, sortedIndex, false, false);
+    setTime((et - st).toFixed(2));
     setIsSorted(true);
     setInProgress(false);
 }
