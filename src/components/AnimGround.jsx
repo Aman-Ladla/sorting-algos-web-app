@@ -64,7 +64,9 @@ function AnimGround(props) {
 
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
 
-                <div className={"anim"} style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                <div className={"bar"}
+                // style={{ display: "flex", flexDirection: "row", justifyContent: "center", alignContent: "flex-start" }}
+                >
                     {arr.map((value, index) => {
                         return (
                             selectBrain(index, value, i, j, flag, algoID)
