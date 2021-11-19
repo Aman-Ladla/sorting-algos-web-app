@@ -214,8 +214,6 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
 
     // let randomColor = Math.floor(Math.random()*16777215).toString(16);
 
-    let color = "";
-
     function getRandomColor() {
         var letters = '45789ABCD'.split('');
         var color = '#';

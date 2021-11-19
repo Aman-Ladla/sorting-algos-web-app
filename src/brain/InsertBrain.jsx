@@ -11,6 +11,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
             return (
                 <Anime duration={speed - 10} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Bar
+                        key={index}
                         Color={color}
                         arr={arr}
                         index={index}
@@ -24,6 +25,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
         } else {
             return (
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -41,6 +43,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
             return (
                 <Anime duration={speed - 10} translateX={translate * (j - i)} easing={"easeInOutQuad"}>
                     <Bar
+                        key={index}
                         Color={color}
                         arr={arr}
                         index={index}
@@ -57,6 +60,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
                 <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Anime duration={speed - 10} translateX={-translate * (j - i)} easing={"easeInOutQuad"}>
                         <Bar
+                            key={index}
                             Color={color}
                             arr={arr}
                             index={index}
@@ -72,6 +76,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
         else {
             return (
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -92,6 +97,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
                 <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Anime duration={speed - 10} scaleY={2} translateY={-(360 - (425 * factor))} easing={"easeInOutQuad"}>
                         <Bar
+                            key={index}
                             Color={color}
                             arr={arr}
                             index={index}
@@ -107,6 +113,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
         else {
             return (
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -123,6 +130,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
     else {
         return (
             <Bar
+                key={index}
                 Color={color}
                 arr={arr}
                 index={index}

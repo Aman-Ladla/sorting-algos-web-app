@@ -74,7 +74,6 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime)
         update(arr, i, 0, sortedIndex, false, false);
         await maxHeapify(arr, i, 0, update, speed);
     }
-    console.log(arr);
     sortedIndex = [];
     update(arr, -1, -1, sortedIndex, false, false);
     setTime((et - st).toFixed(2));

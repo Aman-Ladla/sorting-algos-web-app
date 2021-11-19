@@ -20,6 +20,7 @@ function BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translat
         return (
             <Anime duration={speed - 10} translateX={translate * (j - i)} easing={"easeInOutQuad"}>
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -34,6 +35,7 @@ function BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translat
         return (
             <Anime duration={speed - 10} translateX={-translate * (j - i)} easing={"easeInOutQuad"}>
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -47,6 +49,7 @@ function BubbleBrain(index, value, i, j, flag, arr, heightFactor, size, translat
     } else {
         return (
             <Bar
+                key={index}
                 Color={color}
                 arr={arr}
                 index={index}

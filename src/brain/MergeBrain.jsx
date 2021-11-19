@@ -1,8 +1,6 @@
 import Anime from 'react-anime';
 import Bar from '../components/Bar';
 
-let modColor = "00ff00";
-
 function MergeBrain(index, value, mergeStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
     let { low, mid, k, i, j, f1, f2, isPositioned, isPositionedTx, colorEleArr, colorArr } = mergeStates;
 

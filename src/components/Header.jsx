@@ -1,10 +1,12 @@
 import AlgoButton from "./AlgoButton";
-import {useState} from "react";
+import { useState } from "react";
 import logo from "../../src/sortingLogo.png";
 
 function Header(props) {
 
     const [selectedAlgo, setAlgo] = useState(-1);
+
+    const [bgPosition, setbgPosition] = useState("0px 0px");
 
     function setAlgoImpl(i) {
         props.algoID(i);
@@ -12,7 +14,14 @@ function Header(props) {
     }
 
     return (
-        <div className={"head"} style={{display: "flex"}}>
+        <div className={"head"} style={{ display: "flex", backgroundPosition: bgPosition, }}
+            onMouseMove={(e) => {
+                setbgPosition((e.clientX - 15) + 'px ' + (e.clientY - 15) + 'px');
+            }}
+            onMouseOut={() => {
+                setbgPosition("-1px -1px");
+            }}
+        >
             <img
                 src={logo}
                 alt="Logo"

@@ -1,38 +1,50 @@
-import {useState} from "react";
+import { useState } from "react";
 
-function AlgoButton(props){
+function AlgoButton(props) {
 
     const [onButton, setOnButton] = useState(false);
 
-    const[clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(false);
+
+    const [bgPosition, setbgPosition] = useState("0px 0px");
 
     function inSubmit() {
         setOnButton(true);
     }
 
     function outSubmit() {
+        setbgPosition("0px 0px");
         setOnButton(false);
     }
 
-    return(
-        <button className={"algoButtons"}
-                onMouseOver={inSubmit}
-                onMouseOut={outSubmit}
-                onClick={() => {
-                    setClicked(false);
-                    props.setAlgoImpl(-1);
-                    setClicked(true);
-                    props.setAlgoImpl(props.id);
-                }}
-                style={
-                    {
-                        marginLeft: props.name === "Bubble Sort" ?   "auto" : "40px",
-                        fontWeight:500,
-                        backgroundColor :
+    return (
+        <button className={`algoButtons ${onButton && "extra"}`}
+            onMouseOver={inSubmit}
+            onMouseOut={outSubmit}
+            onMouseMove={(e) => {
+                setbgPosition((e.clientX - 15) + 'px ' + (e.clientY - 15) + 'px');
+            }}
+            onClick={() => {
+                setClicked(false);
+                props.setAlgoImpl(-1);
+                setClicked(true);
+                props.setAlgoImpl(props.id);
+                // if (props.arr0.length !== 0) {
+                //     console.log(`here ${props.arr0}`);
+                //     props.update(props.arr0);
+                // }
+            }}
+            style={
+                {
+                    marginLeft: props.name === "Bubble Sort" ? "auto" : "40px",
+                    fontWeight: 500,
+                    backgroundColor:
                         clicked && (props.id === props.sa) ? "#3BBF7D" : (onButton ? "#ff336a" : "black"),
-                        color : onButton && "black"
-                    }
-                }>
+                    // cursor: onButton && "default",
+                    color: onButton && "black",
+                    backgroundPosition: bgPosition,
+                }
+            }>
             {props.name}
         </button>
     );

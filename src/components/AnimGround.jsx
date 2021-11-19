@@ -47,6 +47,7 @@ function AnimGround(props) {
                 return MergeBrain(index, value, props.mergeStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted);
             default:
                 return <Bar
+                    key={index}
                     Color="lightgreen"
                     arr={arr}
                     index={index}

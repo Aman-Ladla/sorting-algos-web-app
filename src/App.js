@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Controls from "./components/Controls";
 import AnimGround from "./components/AnimGround";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import createArray from "./CreatingArr";
 
 function App() {
@@ -11,6 +11,12 @@ function App() {
     const [arr, setArr] = useState(createArray(10));
 
     const [speed, setSpeed] = useState(300);
+
+    // useEffect(() => {
+    //     // console.log(arr);
+    //     // console.log('setArr is called');
+    //     console.log('update' + arr0);
+    // }, [arr0]);
 
     const [states, setStates] = useState(
         {
