@@ -1,5 +1,5 @@
 import AlgoButton from "./AlgoButton";
-import {useState} from "react";
+import { useState } from "react";
 import logo from "../../src/sortingLogo.png";
 
 function Header(props) {
@@ -12,7 +12,7 @@ function Header(props) {
     }
 
     return (
-        <div className={"head"} style={{display: "flex"}}>
+        <div className={"head"} style={{ display: "flex" }}>
             <img
                 src={logo}
                 alt="Logo"

@@ -6,9 +6,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from "react";
 import createArray from "./CreatingArr";
 
+let arr0;
+let value = true;
+
 function App() {
 
     const [arr, setArr] = useState(createArray(10));
+
+    if (value) {
+        arr0 = [...arr];
+        value = false;
+    }
 
     const [speed, setSpeed] = useState(300);
 
@@ -76,6 +84,13 @@ function App() {
     );
 
     function setAlgoImpl(i) {
+        if (selectedAlgo === -1) {
+            arr0 = [...arr];
+        } else {
+            setArr([...arr0]);
+            setInProcessImpl(false);
+            setIsSortedImpl(false);
+        }
         setAlgo(i);
     }
 
@@ -93,6 +108,7 @@ function App() {
 
 
     function updateArr(size) {
+        value = true;
         setArr(createArray(size));
     }
 
