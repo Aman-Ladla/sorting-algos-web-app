@@ -12,7 +12,7 @@
 
 let positionedIndexArr = [];
 
-async function QuickSort(arr, low, high, update, speed, setIsSorted, setInProgress, setTime) {
+async function QuickSort(arr, low, high, update, speed, setIsSorted, setInProgress, setTime, setPsIndex) {
 
     async function partition1(arr, low, high) {
 
@@ -64,30 +64,40 @@ async function QuickSort(arr, low, high, update, speed, setIsSorted, setInProgre
 
 
 
-    await QuickSortImpl(arr, low, high, update, speed);
+    await QuickSortImpl(arr, low, high, update, speed, setPsIndex);
     positionedIndexArr = [];
+    setPsIndex(-1);
     update(arr, -1, -1, -1, false, positionedIndexArr, -1, -1);
     setTime((et - st).toFixed(2));
     setIsSorted(true);
     setInProgress(false);
 }
 
-async function QuickSortImpl(arr, low, high, update, speed) {
+async function QuickSortImpl(arr, low, high, update, speed, setPsIndex) {
     if (low < high) {
-        let index = await partition(arr, low, high, update, speed);
-        await QuickSortImpl(arr, low, index - 1, update, speed);
+        let index = await partition(arr, low, high, update, speed, setPsIndex);
+        await QuickSortImpl(arr, low, index - 1, update, speed, setPsIndex);
         positionedIndexArr.push(low);
-        await QuickSortImpl(arr, index + 1, high, update, speed);
+        await QuickSortImpl(arr, index + 1, high, update, speed, setPsIndex);
         positionedIndexArr.push(index + 1);
     }
 }
 
-async function partition(arr, low, high, update, speed) {
+async function partition(arr, low, high, update, speed, setPsIndex) {
+
+    setPsIndex(0);
+    await new Promise(done => setTimeout(() => done(), speed));
+
     let pivot = arr[high];    //element that goes to desired position
     let i = low - 1;
     update(arr, -1, -1, high, false, positionedIndexArr, low, high);
+    setPsIndex(1);
+    await new Promise(done => setTimeout(() => done(), speed));
     for (let j = low; j <= high - 1; j++) {
+        setPsIndex(2);
+        await new Promise(done => setTimeout(() => done(), speed));
         if (arr[j] <= pivot) {
+            setPsIndex(3);
             i++;
             update(arr, i, j, high, true, positionedIndexArr, low, j);
             await new Promise(done => setTimeout(() => done(), speed));
@@ -101,6 +111,7 @@ async function partition(arr, low, high, update, speed) {
             await new Promise(done => setTimeout(() => done(), speed));
         }
     }
+    setPsIndex(4);
     update(arr, i + 1, high, high, true, positionedIndexArr, low, high);
     positionedIndexArr.push(i + 1);
     await new Promise(done => setTimeout(() => done(), speed));

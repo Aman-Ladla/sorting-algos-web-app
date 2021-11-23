@@ -1,6 +1,6 @@
 let sortedIndex = [];
 
-async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime) {
+async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime, setPsIndex) {
 
     async function heapify(arr, i, n) {
 
@@ -30,7 +30,7 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime)
 
         let n = arr.length;
 
-        for (let j = n / 2 - 1; j >= 0; j--) {
+        for (let j = n / 2 - 1; j >= 1; j--) {
             await heapify(arr, j, n);
         }
 
@@ -61,10 +61,13 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime)
 
     let size = arr.length;
 
+    setPsIndex(0);
+
     for (let i = Math.floor(size / 2) - 1; i >= 0; i--) {
         await maxHeapify(arr, size, i, update, speed);
     }
-    for (let i = size - 1; i >= 0; i--) {
+    for (let i = size - 1; i >= 1; i--) {
+        setPsIndex(3);
         update(arr, 0, i, sortedIndex, true, false);
         await new Promise(done => setTimeout(() => done(), speed));
         sortedIndex.push(i);
@@ -72,8 +75,10 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime)
         arr[0] = arr[i];
         arr[i] = temp;
         update(arr, i, 0, sortedIndex, false, false);
+        setPsIndex(4);
         await maxHeapify(arr, i, 0, update, speed);
     }
+    setPsIndex(-1);
     sortedIndex = [];
     update(arr, -1, -1, sortedIndex, false, false);
     setTime((et - st).toFixed(2));

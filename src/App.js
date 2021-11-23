@@ -5,10 +5,23 @@ import AnimGround from "./components/AnimGround";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState, useEffect } from "react";
 import createArray from "./CreatingArr";
+import getPseudo from "./getPseudo";
+
+let arr0;
+let value = true;
 
 function App() {
 
     const [arr, setArr] = useState(createArray(10));
+
+    const [strings, setStrings] = useState([]);
+
+    const [psIndex, setPsIndex] = useState(-1);
+
+    if (value) {
+        arr0 = [...arr];
+        value = false;
+    }
 
     const [speed, setSpeed] = useState(300);
 
@@ -82,6 +95,14 @@ function App() {
     );
 
     function setAlgoImpl(i) {
+        if (selectedAlgo === -1) {
+            arr0 = [...arr];
+        } else {
+            setArr([...arr0]);
+            setInProcessImpl(false);
+            setIsSortedImpl(false);
+        }
+        setStrings(getPseudo(i));
         setAlgo(i);
     }
 
@@ -99,6 +120,7 @@ function App() {
 
 
     function updateArr(size) {
+        value = true;
         setArr(createArray(size));
     }
 
@@ -202,6 +224,10 @@ function App() {
             case 1:
                 return <AnimGround
                     arr={arr}
+                    inProcess={inProcess}
+                    inSorted={isSorted}
+                    strings={strings}
+                    psIndex={psIndex}
                     max={max}
                     states={states}
                     speed={speed}
@@ -213,6 +239,9 @@ function App() {
             case 2:
                 return <AnimGround
                     arr={arr}
+                    inProcess={inProcess}
+                    strings={strings}
+                    psIndex={psIndex}
                     max={max}
                     states={states}
                     speed={speed}
@@ -224,6 +253,9 @@ function App() {
             case 3:
                 return <AnimGround
                     arr={arr}
+                    inProcess={inProcess}
+                    strings={strings}
+                    psIndex={psIndex}
                     max={max}
                     states={states}
                     speed={speed}
@@ -237,6 +269,9 @@ function App() {
             case 4:
                 return <AnimGround
                     arr={arr}
+                    inProcess={inProcess}
+                    strings={strings}
+                    psIndex={psIndex}
                     max={max}
                     states={heapStates}
                     speed={speed}
@@ -247,6 +282,9 @@ function App() {
             case 5:
                 return <AnimGround
                     arr={arr}
+                    inProcess={inProcess}
+                    strings={strings}
+                    psIndex={psIndex}
                     max={max}
                     states={states}
                     speed={speed}
@@ -258,6 +296,9 @@ function App() {
             default:
                 return <AnimGround
                     arr={arr}
+                    inProcess={inProcess}
+                    strings={strings}
+                    psIndex={psIndex}
                     max={max}
                     states={states}
                     speed={speed}
@@ -274,7 +315,9 @@ function App() {
     return (
         <div className="App">
             <Header
-                algoID={setAlgoImpl} />
+                algoID={setAlgoImpl}
+                inProcess={inProcess}
+            />
             <Controls
                 update={updateArr}
                 speed={speed}
@@ -287,6 +330,7 @@ function App() {
             <Footer
                 arr={arr}
                 // update={selectedAlgo===1 ? modifyArrBubble : selectedAlgo===2 ? modifyArrInsert : selectedAlgo===3 ? modifyArrQuick : modifyArrBubble}
+                setPsIndex={setPsIndex}
                 update={updateAlgoSelection(selectedAlgo)}
                 speed={speed}
                 inProcess={inProcess}

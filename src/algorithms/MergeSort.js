@@ -15,7 +15,7 @@
  */
 
 
-async function MergeSort(arr, update, speed, setIsSorted, setInProgress, colorEleArr, colorArr, setTime) {
+async function MergeSort(arr, update, speed, setIsSorted, setInProgress, colorEleArr, colorArr, setTime, setPsIndex) {
 
     async function mergeSort1(arr, low, high) {
 
@@ -53,7 +53,7 @@ async function MergeSort(arr, update, speed, setIsSorted, setInProgress, colorEl
         let k = low;
 
         while (i < n1 && j < n2) {
-            if (left[i] < right[j]) {
+            if (left[i] <= right[j]) {
                 arr[k] = left[i];
                 i++;
             }
@@ -89,7 +89,7 @@ async function MergeSort(arr, update, speed, setIsSorted, setInProgress, colorEl
     console.timeEnd('time');
 
 
-    await mergeSort(arr, 0, arr.length - 1, update, speed, colorEleArr, colorArr);
+    await mergeSort(arr, 0, arr.length - 1, update, speed, colorEleArr, colorArr, setPsIndex);
 
     update(arr, -1, -1, -1, -1, -1, -1, -1, [], [], [], []);
     setTime((et - st).toFixed(2));
@@ -99,22 +99,25 @@ async function MergeSort(arr, update, speed, setIsSorted, setInProgress, colorEl
 }
 
 
-async function mergeSort(arr, low, high, update, speed, colorEleArr, colorArr) {
+async function mergeSort(arr, low, high, update, speed, colorEleArr, colorArr, setPsIndex) {
 
     if (low < high) {
         let m = low + Math.floor((high - low) / 2);
 
-        await mergeSort(arr, low, m, update, speed, colorEleArr, colorArr);
-        await mergeSort(arr, m + 1, high, update, speed, colorEleArr, colorArr);
+        await mergeSort(arr, low, m, update, speed, colorEleArr, colorArr, setPsIndex);
+        await mergeSort(arr, m + 1, high, update, speed, colorEleArr, colorArr, setPsIndex);
 
-        await merge(arr, low, m, high, update, speed, colorEleArr, colorArr);
+        await merge(arr, low, m, high, update, speed, colorEleArr, colorArr, setPsIndex);
         await new Promise(done => setTimeout(() => done(), speed));
 
     }
 
 }
 
-async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) {
+async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr, setPsIndex) {
+
+    setPsIndex(1);
+    await new Promise(done => setTimeout(() => done(), speed));
 
     let n1 = mid - low + 1;
     let n2 = high - mid;
@@ -140,8 +143,9 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
     let temp = [...arr]
 
     while (i < n1 && j < n2) {
-        if (left[i] < right[j]) {
+        if (left[i] <= right[j]) {
             // console.log("lefty form " + (k - i));
+            setPsIndex(2);
             update(temp, low, mid, k, i, j, 0, 0, isPositioned, isPositionedTx, colorEleArr, colorArr);
             await new Promise(done => setTimeout(() => done(), speed));
             arr[k + low] = left[i];
@@ -152,6 +156,7 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
         }
         else {
             // console.log("righty form " + ((low + k) - (mid + j + 1)));
+            setPsIndex(3);
             update(temp, low, mid, k, i, j, 1, 0, isPositioned, isPositionedTx, colorEleArr, colorArr);
             await new Promise(done => setTimeout(() => done(), speed));
             arr[k + low] = right[j];
@@ -165,6 +170,7 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
 
     while (i < n1) {
         // console.log("lefty form " + (k - i));
+        setPsIndex(2);
         update(temp, low, mid, k, i, j, 0, 0, isPositioned, isPositionedTx, colorEleArr, colorArr);
         await new Promise(done => setTimeout(() => done(), speed));
         arr[k + low] = left[i];
@@ -177,6 +183,7 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
 
     while (j < n2) {
         // console.log("righty form " + ((low + k) - (mid + j + 1)));
+        setPsIndex(3);
         update(temp, low, mid, k, i, j, 1, 0, isPositioned, isPositionedTx, colorEleArr, colorArr);
         await new Promise(done => setTimeout(() => done(), speed));
         arr[k + low] = right[j];
@@ -186,6 +193,8 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
         j++;
         k++;
     }
+
+    setPsIndex(4);
 
     update(temp, low, mid, k, i, j, -1, 1, isPositioned, isPositionedTx, colorEleArr, colorArr);
     await new Promise(done => setTimeout(() => done(), speed));
@@ -235,6 +244,8 @@ async function merge(arr, low, mid, high, update, speed, colorEleArr, colorArr) 
 
     // console.log("colorEleArr " + colorEleArr.toString);
     // console.log("ispositioned" + isPositioned);
+
+    setPsIndex(-1);
 
     update(arr, -1, -1, -1, -1, -1, -1, -1, [], [], colorEleArr, colorArr);
     // await new Promise(done => setTimeout(() => done(), speed));

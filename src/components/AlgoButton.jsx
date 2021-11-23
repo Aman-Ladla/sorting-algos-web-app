@@ -25,14 +25,12 @@ function AlgoButton(props) {
                 setbgPosition((e.clientX - 15) + 'px ' + (e.clientY - 15) + 'px');
             }}
             onClick={() => {
-                setClicked(false);
-                props.setAlgoImpl(-1);
-                setClicked(true);
-                props.setAlgoImpl(props.id);
-                // if (props.arr0.length !== 0) {
-                //     console.log(`here ${props.arr0}`);
-                //     props.update(props.arr0);
-                // }
+                if (!props.inProcess) {
+                    setClicked(false);
+                    props.setAlgoImpl(-1);
+                    setClicked(true);
+                    props.setAlgoImpl(props.id);
+                }
             }}
             style={
                 {

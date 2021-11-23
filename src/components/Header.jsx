@@ -35,30 +35,35 @@ function Header(props) {
                 id={1}
                 sa={selectedAlgo}
                 setAlgoImpl={setAlgoImpl}
+                inProcess={props.inProcess}
             />
             <AlgoButton
                 name={"Insertion Sort"}
                 id={2}
                 setAlgoImpl={setAlgoImpl}
                 sa={selectedAlgo}
+                inProcess={props.inProcess}
             />
             <AlgoButton
                 name={"Quick Sort"}
                 id={3}
                 setAlgoImpl={setAlgoImpl}
                 sa={selectedAlgo}
+                inProcess={props.inProcess}
             />
             <AlgoButton
                 name={"Heap Sort"}
                 id={4}
                 setAlgoImpl={setAlgoImpl}
                 sa={selectedAlgo}
+                inProcess={props.inProcess}
             />
             <AlgoButton
                 name={"Merge Sort"}
                 id={5}
                 setAlgoImpl={setAlgoImpl}
                 sa={selectedAlgo}
+                inProcess={props.inProcess}
             />
         </div>
     )

@@ -1,6 +1,6 @@
 
 
-async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTime) {
+async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTime, setPsIndex) {
 
     async function bubble(arr) {
         let flag;
@@ -42,7 +42,9 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTim
         flag = false;
         for (let j = 0; j < arr.length - i; j++) {
             flag1 = false;
+            setPsIndex(1);
             if (arr[j] > arr[j + 1]) {
+                setPsIndex(2);
                 update(arr, i, j, j + 1, true);
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
@@ -62,6 +64,8 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTim
             break;
         }
     }
+
+    setPsIndex(-1);
 
     update(arr, -1, -1, -1, false);
     setTime((et - st).toFixed(2));

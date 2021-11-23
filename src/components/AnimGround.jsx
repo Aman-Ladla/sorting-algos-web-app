@@ -4,6 +4,7 @@ import InsertBrain from '../brain/InsertBrain';
 import QuickBrain from '../brain/QuickBrain';
 import MergeBrain from '../brain/MergeBrain';
 import HeapBrain from '../brain/HeapBrain';
+import Anime from 'react-anime';
 
 function AnimGround(props) {
 
@@ -22,6 +23,10 @@ function AnimGround(props) {
     // }
 
     let speed = props.speed;
+
+    console.log(props.isSorted);
+
+    const strings = props.strings;
 
     let isSorted = props.isSorted;
 
@@ -61,6 +66,50 @@ function AnimGround(props) {
 
     return (
         <div className="animContainer">
+
+            {
+
+                props.inProcess ?
+
+                    <Anime className={'psTemp0'} duration={speed - 10} scaleX={[0.0, 1.0]} easing={"easeInOutQuad"}>
+
+                        <div className={'psDiv'}>
+
+                            {strings !== undefined && strings.map((s, index) => {
+                                return (
+                                    <div style={{ backgroundColor: index === props.psIndex && '#6c69cc' }}>
+                                        <p style={{ padding: 4 }}>{s}</p>
+                                    </div>)
+
+                            })
+                            }
+                        </div>
+
+                    </Anime>
+
+                    :
+
+                    props.isSorted &&
+
+                    <Anime className={'psTemp0'} duration={speed - 10} scaleX={[1.0, 0.0]} easing={"easeInOutQuad"}>
+
+                        <div className={'psDiv'}>
+
+                            {strings !== undefined && strings.map((s, index) => {
+                                return (
+                                    <div style={{ backgroundColor: index === props.psIndex && '#6c69cc' }}>
+                                        <p style={{ padding: 4 }}>{s}</p>
+                                    </div>)
+
+                            })
+                            }
+                        </div>
+
+                    </Anime>
+
+
+            }
+
             <div className="anim">
 
                 {/*<Anime delay={anime.stagger(50)} scale={[ 0.0, 1 ]}>*/}
@@ -77,7 +126,7 @@ function AnimGround(props) {
                     }
                 </div>
 
-                {isSorted && <p align={"end"} style={{ paddingRight: "10px" }}>Real time for execution : {props.time}ms</p>}
+                {isSorted && <p align={"end"} style={{ paddingRight: "10px" }}>Actual execution time : {props.time}ms</p>}
 
             </div>
         </div>

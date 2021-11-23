@@ -158,6 +158,22 @@ button:disabled {
     align-items: center;
 }
 
+.psTemp0{
+    position: absolute;
+    bottom: 6.8%;
+}
+
+.psDiv{
+    line-height: 0.7;
+    padding: 20px 15px 0 15px ;
+    position: absolute;
+    bottom: 6.8%;
+    height: 200px;
+    width: 400px;
+    background-color: #81d7d4;
+    /* overflow-y: auto; */
+}
+
 .anim{
     height: 100%;
     width: 80%;
