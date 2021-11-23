@@ -34,7 +34,7 @@ button:disabled {
     width: 150px;
     /* padding: 20px 50px; */
     position:relative;
-    cursor: url(grey_pointer.png), auto;
+    /* cursor: url(grey_pointer.png), auto; */
 }
 
 .algoButtons::after {
@@ -98,10 +98,28 @@ button:disabled {
 }
 
 .newArrayButton{
+    position: relative;
     background-color: rgba(0,0,0,.98);
     border: none;
     color: rgba(255,255,255,0.9);
 }
+
+.newArrayButton::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+      radial-gradient(farthest-side, 
+      rgba(0, 255, 128, 0.6)  calc(100% - 1px),
+       transparent 0%) 
+       fixed 
+       no-repeat;
+    background-size:30px 30px;
+    background-position:inherit;
+  }
 
 .newArrayButton:hover{
     color: white;
@@ -141,13 +159,30 @@ button:disabled {
 }
 
 .sortButton{
+    position: relative;
     height: 85%;
-    background-color: limegreen;
+    background-color: rgb(59, 191, 125);
     color: black;
     border: none;
     width: 90px;
-    cursor: url(../src/Pointer/grey_pointer.png), pointer;
 }
+
+.sortButton::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+      radial-gradient(farthest-side, 
+      rgba(232, 65, 109, 0.6)  calc(100% - 1px),
+       transparent 0%) 
+       fixed 
+       no-repeat;
+    background-size:30px 30px;
+    background-position:inherit;
+  }
 
 /*Animation ground styles*/
 
