@@ -37,9 +37,9 @@ function AlgoButton(props) {
                     marginLeft: props.name === "Bubble Sort" ? "auto" : "40px",
                     fontWeight: 500,
                     backgroundColor:
-                        clicked && (props.id === props.sa) ? "#3BBF7D" : (onButton ? "#ff336a" : "black"),
+                        clicked && (props.id === props.sa) ? "#3BBF7D" : props.inProcess ? "grey" : (onButton ? "#ff336a" : "black"),
                     // cursor: onButton && "default",
-                    color: onButton && "black",
+                    color: !props.inProcess && onButton && "black",
                     backgroundPosition: bgPosition,
                 }
             }>
