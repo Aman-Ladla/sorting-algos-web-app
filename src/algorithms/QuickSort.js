@@ -92,10 +92,10 @@ async function partition(arr, low, high, update, speed, setPsIndex) {
     let i = low - 1;
     update(arr, -1, -1, high, false, positionedIndexArr, low, high);
     setPsIndex(1);
-    await new Promise(done => setTimeout(() => done(), speed));
+    //await new Promise(done => setTimeout(() => done(), speed));
     for (let j = low; j <= high - 1; j++) {
         setPsIndex(2);
-        await new Promise(done => setTimeout(() => done(), speed));
+        //await new Promise(done => setTimeout(() => done(), speed));
         if (arr[j] <= pivot) {
             setPsIndex(3);
             i++;
