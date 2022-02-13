@@ -11,10 +11,16 @@ body{
 }
 .App{
     height: 100%;
+    /* cursor: url(grey_pointer.png), auto; */
 }
 #root{
     height: 100%;
 }
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
 
 /*Header styles*/
 
@@ -26,14 +32,52 @@ body{
     height: 70%;
     border-radius: 30px;
     width: 150px;
+    /* padding: 20px 50px; */
+    position:relative;
+    /* cursor: url(grey_pointer.png), auto; */
 }
+
+.algoButtons::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+      radial-gradient(farthest-side, 
+      rgba(0, 255, 128, 0.6)  calc(100% - 1px),
+       transparent 0%) 
+       fixed /* Fixed to the screen*/ 
+       no-repeat; /* Don't repeat*/
+    background-size:30px 30px;
+    background-position:inherit;
+  }
 
 .head{
     background-color: black;
     display: flex;
     align-items: center;
     height:9.5%;
+    position:relative;
 }
+
+/* .head::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+      radial-gradient(farthest-side, 
+      rgba(0, 255, 128, 0.6)  calc(100% - 1px),
+       transparent 0%) 
+       fixed
+       no-repeat;
+    background-size:30px 30px;
+    background-position:inherit;
+  } */
 
 /*Sub Header styles*/
 
@@ -47,16 +91,35 @@ body{
     align-items: center
 }
 
+
 .labels{
     color: white;
     margin-right: 15px;
 }
 
 .newArrayButton{
+    position: relative;
     background-color: rgba(0,0,0,.98);
     border: none;
     color: rgba(255,255,255,0.9);
 }
+
+.newArrayButton::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+      radial-gradient(farthest-side, 
+      rgba(0, 255, 128, 0.6)  calc(100% - 1px),
+       transparent 0%) 
+       fixed 
+       no-repeat;
+    background-size:30px 30px;
+    background-position:inherit;
+  }
 
 .newArrayButton:hover{
     color: white;
@@ -96,12 +159,30 @@ body{
 }
 
 .sortButton{
+    position: relative;
     height: 85%;
-    background-color: limegreen;
+    background-color: rgb(59, 191, 125);
     color: black;
     border: none;
     width: 90px;
 }
+
+.sortButton::after {
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background:
+      radial-gradient(farthest-side, 
+      rgba(232, 65, 109, 0.6)  calc(100% - 1px),
+       transparent 0%) 
+       fixed 
+       no-repeat;
+    background-size:30px 30px;
+    background-position:inherit;
+  }
 
 /*Animation ground styles*/
 
@@ -112,14 +193,47 @@ body{
     align-items: center;
 }
 
+.psTemp0{
+    position: absolute;
+    bottom: 6.8%;
+}
+
+.psDiv{
+    line-height: 0.7;
+    padding: 20px 15px 0 15px ;
+    position: absolute;
+    bottom: 6.8%;
+    height: 200px;
+    width: 400px;
+    background-color: #81d7d4;
+    /* overflow-y: auto; */
+}
+
 .anim{
     height: 100%;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     text-align: center; 
     background-color:white;
-    align-content: center;
+    align-content: space-between;
+}
+
+.bar{
+    height: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.extra{
+    /* cursor: url(t3.png) 20 10, auto !important; */
+    cursor: none !important;
 }

@@ -2,8 +2,8 @@ import Anime from 'react-anime';
 import Bar from '../components/Bar';
 
 function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFactor, size, translate, sizeFlag, speed, isSorted) {
-    let {f1,f2,f3,insertSI} = insertionStates;
-    let color = isSorted ? "lightBlue" : index === i || index === j ? "#ff5e5e" : index<insertSI ? "yellow" :"lightGreen";
+    let { f1, f2, f3, insertSI } = insertionStates;
+    let color = isSorted ? "lightBlue" : index === i || index === j ? "#ff5e5e" : index < insertSI ? "#f9fb5a" : "lightGreen";
 
     if (f1 === 1 && f2 === 0 && f3 === 1) {
 
@@ -11,6 +11,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
             return (
                 <Anime duration={speed - 10} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Bar
+                        key={index}
                         Color={color}
                         arr={arr}
                         index={index}
@@ -24,6 +25,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
         } else {
             return (
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -41,6 +43,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
             return (
                 <Anime duration={speed - 10} translateX={translate * (j - i)} easing={"easeInOutQuad"}>
                     <Bar
+                        key={index}
                         Color={color}
                         arr={arr}
                         index={index}
@@ -57,6 +60,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
                 <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Anime duration={speed - 10} translateX={-translate * (j - i)} easing={"easeInOutQuad"}>
                         <Bar
+                            key={index}
                             Color={color}
                             arr={arr}
                             index={index}
@@ -72,6 +76,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
         else {
             return (
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -83,15 +88,16 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
             )
         }
     }
-    else if(f1 === 1 && f2 === 1 && f3 === 1){
+    else if (f1 === 1 && f2 === 1 && f3 === 1) {
 
-        let factor = 0.3 - (((100 - value) * 0.2)/100);
+        let factor = 0.3 - (((100 - value) * 0.2) / 100);
 
-        if(index === j){
+        if (index === j) {
             return (
                 <Anime duration={0} scaleY={0.5} translateY={425} easing={"easeInOutQuad"}>
                     <Anime duration={speed - 10} scaleY={2} translateY={-(360 - (425 * factor))} easing={"easeInOutQuad"}>
                         <Bar
+                            key={index}
                             Color={color}
                             arr={arr}
                             index={index}
@@ -107,6 +113,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
         else {
             return (
                 <Bar
+                    key={index}
                     Color={color}
                     arr={arr}
                     index={index}
@@ -123,6 +130,7 @@ function InsertBrain(index, value, i, j, flag, insertionStates, arr, heightFacto
     else {
         return (
             <Bar
+                key={index}
                 Color={color}
                 arr={arr}
                 index={index}
