@@ -1,9 +1,15 @@
 let sortedIndex = [];
 
-async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime, setPsIndex) {
-
+async function HeapSort(
+    arr,
+    update,
+    speed,
+    setIsSorted,
+    setInProgress,
+    setTime,
+    setPsIndex
+) {
     async function heapify(arr, i, n) {
-
         let largest = i;
 
         let l = 2 * i + 1;
@@ -23,11 +29,9 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime,
             arr[largest] = temp;
             await heapify(arr, largest, n);
         }
-
     }
 
     async function heapSort(arr) {
-
         let n = arr.length;
 
         for (let j = n / 2 - 1; j >= 1; j--) {
@@ -35,29 +39,24 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime,
         }
 
         for (let i = n - 1; i > 0; i--) {
-
             let temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
 
             await heapify(arr, 0, i);
         }
-
     }
 
     let temp = [...arr];
 
     // let st = new Date().getMilliseconds();
     let st = performance.now();
-    console.time('time');
+    // console.time('time');
     await heapSort(temp);
     let et = performance.now();
     // let et = new Date().getMilliseconds();
 
-    console.timeEnd('time');
-
-
-
+    // console.timeEnd('time');
 
     let size = arr.length;
 
@@ -69,7 +68,7 @@ async function HeapSort(arr, update, speed, setIsSorted, setInProgress, setTime,
     for (let i = size - 1; i >= 1; i--) {
         setPsIndex(3);
         update(arr, 0, i, sortedIndex, true, false);
-        await new Promise(done => setTimeout(() => done(), speed));
+        await new Promise((done) => setTimeout(() => done(), speed));
         sortedIndex.push(i);
         let temp = arr[0];
         arr[0] = arr[i];
@@ -101,7 +100,7 @@ async function maxHeapify(array, size, l, update, speed) {
 
     if (largest !== l) {
         update(array, l, largest, sortedIndex, true, true);
-        await new Promise(done => setTimeout(() => done(), speed));
+        await new Promise((done) => setTimeout(() => done(), speed));
         let temp = array[l];
         array[l] = array[largest];
         array[largest] = temp;

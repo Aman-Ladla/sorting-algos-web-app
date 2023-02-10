@@ -1,7 +1,13 @@
-async function InsertionSort(arr, update, speed, setIsSorted, setInProgress, setTime, setPsIndex) {
-
+async function InsertionSort(
+    arr,
+    update,
+    speed,
+    setIsSorted,
+    setInProgress,
+    setTime,
+    setPsIndex
+) {
     async function insertion(arr) {
-
         for (let i = 1; i < arr.length; i++) {
             let temp = arr[i];
 
@@ -13,23 +19,19 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress, set
             }
 
             arr[j + 1] = temp;
-
         }
-
     }
 
     let temp = [...arr];
 
     // let st = new Date().getMilliseconds();
     let st = performance.now();
-    console.time('time');
+    // console.time('time');
     await insertion(temp);
     let et = performance.now();
     // let et = new Date().getMilliseconds();
 
-    console.timeEnd('time');
-
-
+    // console.timeEnd('time');
 
     /**
      * Update Params:
@@ -47,12 +49,12 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress, set
         let value = arr[i];
         let j = i - 1;
         update(arr, -1, j + 1, 1, 0, 1, i, false);
-        await new Promise(done => setTimeout(() => done(), speed));
+        await new Promise((done) => setTimeout(() => done(), speed));
         setPsIndex(2);
         while (j >= 0 && arr[j] > value) {
             setPsIndex(3);
             update(arr, j, j + 1, 0, 0, 0, i + 1, true);
-            await new Promise(done => setTimeout(() => done(), speed));
+            await new Promise((done) => setTimeout(() => done(), speed));
             arr[j + 1] = arr[j];
             arr[j] = value;
             update(arr, -1, j, 1, 0, 0, i + 1, false);
@@ -61,7 +63,7 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress, set
         setPsIndex(4);
         arr[j + 1] = value;
         update(arr, -1, j + 1, 1, 1, 1, i + 1, false);
-        await new Promise(done => setTimeout(() => done(), speed));
+        await new Promise((done) => setTimeout(() => done(), speed));
         update(arr, -1, -1, -1, -1, -1, i + 1, false);
         // await new Promise(done => setTimeout(() => done(), speed));
     }
@@ -70,7 +72,6 @@ async function InsertionSort(arr, update, speed, setIsSorted, setInProgress, set
     setTime((et - st).toFixed(2));
     setIsSorted(true);
     setInProgress(false);
-
 }
 
 export default InsertionSort;
