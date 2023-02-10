@@ -1,7 +1,12 @@
-
-
-async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTime, setPsIndex) {
-
+async function BubbleSort(
+    arr,
+    update,
+    speed,
+    setIsSorted,
+    setInProgress,
+    setTime,
+    setPsIndex
+) {
     async function bubble(arr) {
         let flag;
 
@@ -25,14 +30,12 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTim
 
     // let st = new Date().getMilliseconds();
     let st = performance.now();
-    console.time('time');
+    // console.time('time');
     await bubble(temp);
     let et = performance.now();
     // let et = new Date().getMilliseconds();
 
-    console.timeEnd('time');
-
-
+    // console.timeEnd('time');
 
     let flag;
 
@@ -57,7 +60,7 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTim
                 update(arr, i, j, j + 1, false);
             }
 
-            await new Promise(done => setTimeout(() => done(), speed));
+            await new Promise((done) => setTimeout(() => done(), speed));
             update(arr, i, j, j + 1, false);
         }
         if (!flag) {
@@ -71,7 +74,6 @@ async function BubbleSort(arr, update, speed, setIsSorted, setInProgress, setTim
     setTime((et - st).toFixed(2));
     setIsSorted(true);
     setInProgress(false);
-
 }
 
 export default BubbleSort;

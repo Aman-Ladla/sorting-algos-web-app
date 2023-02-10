@@ -1,9 +1,9 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
+import AnimGround from "./components/AnimGround";
+import Controls from "./components/Controls";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Controls from "./components/Controls";
-import AnimGround from "./components/AnimGround";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState, useEffect } from "react";
 import createArray from "./CreatingArr";
 import getPseudo from "./getPseudo";
 
@@ -11,7 +11,6 @@ let arr0;
 let value = true;
 
 function App() {
-
     const [arr, setArr] = useState(createArray(10));
 
     const [strings, setStrings] = useState([]);
@@ -31,13 +30,11 @@ function App() {
     //     console.log('update' + arr0);
     // }, [arr0]);
 
-    const [states, setStates] = useState(
-        {
-            i: -1,
-            j: -1,
-            flag: false,
-        }
-    );
+    const [states, setStates] = useState({
+        i: -1,
+        j: -1,
+        flag: false,
+    });
 
     const [inProcess, setInProcess] = useState(false);
 
@@ -49,50 +46,42 @@ function App() {
 
     const [bubbleSortedIndex, setBSI] = useState(-1);
 
-    const [insertStates, setInsertStates] = useState(
-        {
-            f1: -1,
-            f2: -1,
-            f3: -1,
-            insertSI: -1
-        }
-    );
+    const [insertStates, setInsertStates] = useState({
+        f1: -1,
+        f2: -1,
+        f3: -1,
+        insertSI: -1,
+    });
 
-    const [mergeStates, setMergeStates] = useState(
-        {
-            low: -1,
-            mid: -1,
-            k: -1,
-            i: -1,
-            j: -1,
-            f1: -1,
-            isPositioned: [],
-            isPositionedTx: [],
-            colorEleArr: [],
-            colorArr: [],
-        }
-    )
+    const [mergeStates, setMergeStates] = useState({
+        low: -1,
+        mid: -1,
+        k: -1,
+        i: -1,
+        j: -1,
+        f1: -1,
+        isPositioned: [],
+        isPositionedTx: [],
+        colorEleArr: [],
+        colorArr: [],
+    });
 
     const [positionedIndexArr, setPositionedIndexArr] = useState([]);
 
     const [pivotElement, setPivot] = useState(-1);
 
-    const [partitionLimits, setLimits] = useState(
-        {
-            low: -1,
-            high: -1
-        }
-    );
+    const [partitionLimits, setLimits] = useState({
+        low: -1,
+        high: -1,
+    });
 
-    const [heapStates, setHeapStates] = useState(
-        {
-            i: -1,
-            j: -1,
-            sortedIndex: [],
-            flag: false,
-            heapify: false
-        }
-    );
+    const [heapStates, setHeapStates] = useState({
+        i: -1,
+        j: -1,
+        sortedIndex: [],
+        flag: false,
+        heapify: false,
+    });
 
     function setAlgoImpl(i) {
         if (selectedAlgo === -1) {
@@ -117,7 +106,6 @@ function App() {
     function setInProcessImpl(flag) {
         setInProcess(flag);
     }
-
 
     function updateArr(size) {
         value = true;
@@ -146,23 +134,30 @@ function App() {
             j: y,
             flag: flagg,
         });
-        setInsertStates(
-            {
-                f1: f1,
-                f2: f2,
-                f3: f3,
-                insertSI: insertSI,
-            }
-        )
+        setInsertStates({
+            f1: f1,
+            f2: f2,
+            f3: f3,
+            insertSI: insertSI,
+        });
     }
 
-    function modifyArrQuick(array, x, y, pivot, flagg, positionedIndexArr, low, high) {
+    function modifyArrQuick(
+        array,
+        x,
+        y,
+        pivot,
+        flagg,
+        positionedIndexArr,
+        low,
+        high
+    ) {
         setArr([...array]);
         setPivot(pivot);
         setPositionedIndexArr(positionedIndexArr);
         setLimits({
             low: low,
-            high: high
+            high: high,
         });
         setStates({
             i: x,
@@ -172,23 +167,34 @@ function App() {
         // console.log(w);
     }
 
-    function modifyArrMerge(array, low, mid, k, i, j, f1, f2, isPostiioned, isPositionedTx, colorEleArr, colorArr) {
+    function modifyArrMerge(
+        array,
+        low,
+        mid,
+        k,
+        i,
+        j,
+        f1,
+        f2,
+        isPostiioned,
+        isPositionedTx,
+        colorEleArr,
+        colorArr
+    ) {
         setArr([...array]);
-        setMergeStates(
-            {
-                low: low,
-                mid: mid,
-                k: k,
-                i: i,
-                j: j,
-                f1: f1,
-                f2: f2,
-                isPositioned: [...isPostiioned],
-                isPositionedTx: [...isPositionedTx],
-                colorEleArr: [...colorEleArr],
-                colorArr: [...colorArr],
-            }
-        )
+        setMergeStates({
+            low: low,
+            mid: mid,
+            k: k,
+            i: i,
+            j: j,
+            f1: f1,
+            f2: f2,
+            isPositioned: [...isPostiioned],
+            isPositionedTx: [...isPositionedTx],
+            colorEleArr: [...colorEleArr],
+            colorArr: [...colorArr],
+        });
     }
 
     function modifyArrHeap(array, i, j, sortedIndex, flagg, heapify) {
@@ -222,91 +228,102 @@ function App() {
     function selectAnimGround(algoID) {
         switch (algoID) {
             case 1:
-                return <AnimGround
-                    arr={arr}
-                    inProcess={inProcess}
-                    inSorted={isSorted}
-                    strings={strings}
-                    psIndex={psIndex}
-                    max={max}
-                    states={states}
-                    speed={speed}
-                    isSorted={isSorted}
-                    time={time}
-                    algoID={selectedAlgo}
-                    BSI={bubbleSortedIndex}
-                />
+                return (
+                    <AnimGround
+                        arr={arr}
+                        inProcess={inProcess}
+                        inSorted={isSorted}
+                        strings={strings}
+                        psIndex={psIndex}
+                        max={max}
+                        states={states}
+                        speed={speed}
+                        isSorted={isSorted}
+                        time={time}
+                        algoID={selectedAlgo}
+                        BSI={bubbleSortedIndex}
+                    />
+                );
             case 2:
-                return <AnimGround
-                    arr={arr}
-                    inProcess={inProcess}
-                    strings={strings}
-                    psIndex={psIndex}
-                    max={max}
-                    states={states}
-                    speed={speed}
-                    isSorted={isSorted}
-                    time={time}
-                    algoID={selectedAlgo}
-                    insertionStates={insertStates}
-                />
+                return (
+                    <AnimGround
+                        arr={arr}
+                        inProcess={inProcess}
+                        strings={strings}
+                        psIndex={psIndex}
+                        max={max}
+                        states={states}
+                        speed={speed}
+                        isSorted={isSorted}
+                        time={time}
+                        algoID={selectedAlgo}
+                        insertionStates={insertStates}
+                    />
+                );
             case 3:
-                return <AnimGround
-                    arr={arr}
-                    inProcess={inProcess}
-                    strings={strings}
-                    psIndex={psIndex}
-                    max={max}
-                    states={states}
-                    speed={speed}
-                    isSorted={isSorted}
-                    time={time}
-                    algoID={selectedAlgo}
-                    positionedIndexArr={positionedIndexArr}
-                    pivot={pivotElement}
-                    limits={partitionLimits}
-                />
+                return (
+                    <AnimGround
+                        arr={arr}
+                        inProcess={inProcess}
+                        strings={strings}
+                        psIndex={psIndex}
+                        max={max}
+                        states={states}
+                        speed={speed}
+                        isSorted={isSorted}
+                        time={time}
+                        algoID={selectedAlgo}
+                        positionedIndexArr={positionedIndexArr}
+                        pivot={pivotElement}
+                        limits={partitionLimits}
+                    />
+                );
             case 4:
-                return <AnimGround
-                    arr={arr}
-                    inProcess={inProcess}
-                    strings={strings}
-                    psIndex={psIndex}
-                    max={max}
-                    states={heapStates}
-                    speed={speed}
-                    isSorted={isSorted}
-                    time={time}
-                    algoID={selectedAlgo}
-                />
+                return (
+                    <AnimGround
+                        arr={arr}
+                        inProcess={inProcess}
+                        strings={strings}
+                        psIndex={psIndex}
+                        max={max}
+                        states={heapStates}
+                        speed={speed}
+                        isSorted={isSorted}
+                        time={time}
+                        algoID={selectedAlgo}
+                    />
+                );
             case 5:
-                return <AnimGround
-                    arr={arr}
-                    inProcess={inProcess}
-                    strings={strings}
-                    psIndex={psIndex}
-                    max={max}
-                    states={states}
-                    speed={speed}
-                    isSorted={isSorted}
-                    time={time}
-                    algoID={selectedAlgo}
-                    mergeStates={mergeStates}
-                />
+                return (
+                    <AnimGround
+                        arr={arr}
+                        inProcess={inProcess}
+                        strings={strings}
+                        psIndex={psIndex}
+                        max={max}
+                        states={states}
+                        speed={speed}
+                        isSorted={isSorted}
+                        time={time}
+                        algoID={selectedAlgo}
+                        mergeStates={mergeStates}
+                    />
+                );
             default:
-                return <AnimGround
-                    arr={arr}
-                    inProcess={inProcess}
-                    strings={strings}
-                    psIndex={psIndex}
-                    max={max}
-                    states={states}
-                    speed={speed}
-                    isSorted={isSorted}
-                    time={time}
-                    algoID={selectedAlgo}
-                />
-
+                return (
+                    <AnimGround
+                        arr={arr}
+                        inProcess={inProcess}
+                        strings={strings}
+                        psIndex={psIndex}
+                        max={max}
+                        states={states}
+                        speed={speed}
+                        isSorted={isSorted}
+                        time={time}
+                        algoID={selectedAlgo}
+                    />
+                );
         }
     }
 
@@ -314,10 +331,7 @@ function App() {
 
     return (
         <div className="App">
-            <Header
-                algoID={setAlgoImpl}
-                inProcess={inProcess}
-            />
+            <Header algoID={setAlgoImpl} inProcess={inProcess} />
             <Controls
                 update={updateArr}
                 speed={speed}
